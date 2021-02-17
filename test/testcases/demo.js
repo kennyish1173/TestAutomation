@@ -1,8 +1,8 @@
 const hooks = require('./utility/hooks')
 const helper = require('./utility/helper')
 const onBoardingPage = require('./ui-objects/onboardingPage')
-//const loginPage = require('./ui-objects/loginPage')
-const mainWindow = require('./ui-objects/mainWindow')
+const loginPage = require('./ui-objects/loginPage')
+const currentRoomWindow = require('./ui-objects/currentRoomWindow')
 const roomListWindow = require('./ui-objects/roomListWindow')
 const testData = require('./test_data/testdata')
 
@@ -57,29 +57,46 @@ describe('Application Initial launch', function () {
       .click(onBoardingPage.nextButton)
   })
 
-  delay(10000)
+  delay(5000)
 
   it('launches main application window', function () {
     return app.client.getWindowCount().then(function (count) {
-      count.should.equal(7)
+      count.should.equal(6)
     })
+  })
+
+  it('Test Case 002: should login with email and password', function (){
+    return app.client.windowByIndex(loginPage.windowIndex)
+      .waitForEnabled(loginPage.emailTextField)
+      .clearElement(loginPage.emailTextField)
+      .setValue(loginPage.emailTextField,testData.emailAddress_02)
+      .waitForEnabled(loginPage.passwordTextField)
+      .clearElement(loginPage.passwordTextField)
+      .setValue(loginPage.passwordTextField,testData.password_02)
+      .click(loginPage.loginButton)
   })
 
   it('should show room list', function (){
     return app.client.windowByIndex(3)
-      .click(mainWindow.roomListMenuIcon)
+      .click(currentRoomWindow.roomListMenuIcon)
   })
 
-  delay(5000)
+  delay(10000)
 
-  it('launches room list window application window', function () {
+  it('Test Case 008: Should launch Current Room window', function () {
     return app.client.getWindowCount().then(function (count) {
       count.should.equal(7)
     })
   })
 
-  it('should click toggle switch', function (){
+  it('Test Case 009: Should show Room List menu button', function (){
     return app.client.windowByIndex(1)
+      .isExisting(currentRoomWindow.roomListMenuIcon)
+      .click(currentRoomWindow.roomListMenuIcon)
+  })
+
+  it('should click toggle switch', function (){
+    return app.client.windowByIndex(3)
       .click(roomListWindow.toggleOfflineMember)
   })
  })
