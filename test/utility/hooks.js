@@ -6,7 +6,8 @@ const path = require('path')
 //const webdriver = require("selenium-webdriver")
 
 //const pathToRoundzExe = "C:\\Program Files (x86)\\roundz\\roundz.exe"
-const pathToRoundzExe = path.join(__dirname, '..', '..', '..', 'source_code', 'newroundz_r2', 'build', 'win-ia32-unpacked', 'roundz.exe') //run from roundz.exe
+//const pathToRoundzExe = path.join(__dirname, '..', '..', '..', 'source_code', 'newroundz_r2', 'build', 'win-ia32-unpacked', 'roundz.exe') //run from roundz.exe (env#1)
+const pathToRoundzExe = path.join(__dirname, '..', '..', '..', '..', 'source_code', 'newroundz_r2', 'build', 'win-ia32-unpacked', 'roundz.exe') //run from roundz.exe (env#2)
 //const pathToRoundzExe = path.join(__dirname, '..', 'dist', 'electron', 'main') //run from main.js
 
 global.before(() => {
