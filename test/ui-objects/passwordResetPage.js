@@ -4,7 +4,8 @@ module.exports = {
     passwordResetTitleHeaderText: 'パスワードリセット',
     passwordResetParagraph: '#mainpage > div > div > div > div > div.resend_email > p',
     passwordResetParagraphText: '登録のメールアドレスにパスワードリセットのメールを送ります。メールアドレスを入力し、送信ボタンをクリックしてください',
-    passwordResetEmailTextField: '#mainpage > div > div > div > div > div.resend_email > div.input-group.input-group--prepend-icon.input-group--text-field.primary--text',
+    //passwordResetEmailTextField: '#mainpage > div > div > div > div > div.resend_email > div.input-group.input-group--prepend-icon.input-group--text-field.primary--text',
+    passwordResetEmailTextField: '#mainpage > div > div > div > div > div.resend_email > div.input-group.input-group--prepend-icon.input-group--text-field.primary--text > div.input-group__input > input[type=text]',
     sendButton: '#mainpage > div > div > div > div > div.resend_email > div.mb-2 > button',
     passwordResetStatusParagraph: '#mainpage > div > div > div > div > div.resend_email > div.red--text.mt-0.mb-4',
     passwordResetStatusParagraphTextSuccess: 'パスワードのリセットメールを送付しました。'
