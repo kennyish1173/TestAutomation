@@ -9,6 +9,7 @@ const testData = require('./test_data/testdata')
 const settingsWindow = require('./ui-objects/settingsWindow')
 const accountSettingsWindow = require('./ui-objects/accountSettingsWindow')
 const manageRoomWindow= require('./ui-objects/manageRoomPopup')
+const closeWindow = require('./ui-objects/closeWindow')
 
 const assert = require('assert')
 const expect = require('chai').expect
@@ -36,7 +37,7 @@ function delay(interval)
    }).timeout(interval + 100) // The extra 100ms should guarantee the test will not fail due to exceeded timeout
 }
 
-describe('Login to roundz with email and password then check default state', function () {
+describe('Re-login, and check that you are in last logged-in room', function () {
   this.timeout(60000)
   let app
 
@@ -45,7 +46,7 @@ describe('Login to roundz with email and password then check default state', fun
   })
 
   after(async() => {
-    await hooks.stopApp(app)
+    //await hooks.stopApp(app)
   })
   
   beforeEach(async () => {
@@ -95,50 +96,6 @@ describe('Login to roundz with email and password then check default state', fun
 
   delay(10000)
 
-  it('Test Case 008: Should launch Current Room window', function () {
-    return app.client.getWindowCount().then(function (count) {
-      count.should.equal(7)
-    })
-  })
- 
-  // it('Test Case 009: Should show Manage Room button', function (){
-  //   return app.client.windowByIndex(roomListWindow.windowIndex)
-  //     .click(roomListWindow.manageRoomButton)
-  // })
-
-  // // Post Test Case 009 operation
-  // it('Close Manage Room window', function (){
-  //   return app.client.windowByIndex(manageRoomWindow.windowIndex)
-  //     .click(manageRoomWindow.closeButton)
-  // }) 
-
-  // Post Test Case 009 operation
-  it('Collapse room list', function(){
-    return app.client.windowByIndex(currentRoomWindow.windowByIndex)
-      .click(currentRoomWindow.roomListMenuIconCollapse)
-  })
-
-  // Preparation for Test Case 009
-  it('Expand room list', function(){
-    return app.client.windowByIndex(currentRoomWindow.windowByIndex)
-      .click(currentRoomWindow.roomListMenuIconExpand)
-  })
-
-  
-  
-  it('Test Case 010: Should show Settings menu button', function (){
-    return app.client.windowByIndex(currentRoomWindow.windowIndex)
-      .isExisting(currentRoomWindow.settingsMenuIcon)
-      .click(currentRoomWindow.settingsMenuIcon)
-      .click(currentRoomWindow.settingsMenuIcon)
-  })  
-
-  //Preparation for Test Case 011
-  // it('Open Room List Window', function (){
-  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
-  //     .click(currentRoomWindow.roomListMenuIcon)
-  //   })
-
   //Preparation for Test Case 011
   it('Select a room', function (){
     return app.client.windowByIndex(roomListWindow.windowIndex)    
@@ -154,12 +111,6 @@ describe('Login to roundz with email and password then check default state', fun
     selectedRoom = tmp.innerHtml
     console.log(selectedRoom)
   })
-
-  //Preparation for Test Case 011
-  // it('Close Room List Window', function (){
-  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
-  //     .click(currentRoomWindow.roomListMenuIcon)
-  // })
 
   //Preparation for Test Case 011
   it('Open Settings Window', function (){
@@ -223,17 +174,15 @@ describe('Login to roundz with email and password then check default state', fun
     return app.client.windowByIndex(currentRoomWindow.windowIndex).$("off").should.eventually.exist
   })
 
-  // it('Test Case 012: Should show Mic button OFF', function (){
-  //   //expect(micStatusOff).to.contain('off')
-  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
-  //   .$(currentRoomWindow.micStatusOffIcon).should.eventually.exist
-  // })
+  it('Click Close button', function (){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+      .click(currentRoomWindow.closeButton)
+  })
 
+  it('Click Shutdown App button', function (){
+    return app.client.windowByIndex(closeWindow.windowIndex)
+      .click(closeWindow.shutdownAppButton)
+  })
 
-  // it('Test Case 013: Should show Screen Share button OFF', function (){
-  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
-  //     .isExisting(currentRoomWindow.screenshareSTatusOffIcon)
-  //     .click(currentRoomWindow.screenshareSTatusOffIcon)
-  // })
 
  })
