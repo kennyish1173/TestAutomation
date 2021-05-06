@@ -18,6 +18,8 @@ const { systemPreferences, app } = require('electron')
 const { focusOnWin } = require('./utility/helper')
 const { should } = require('chai')
 const { SSL_OP_EPHEMERAL_RSA } = require('constants')
+const passwordResetPage = require('./ui-objects/passwordResetPage')
+const { passwordResetEmailTextField, passwordResetStatusParagraph } = require('./ui-objects/passwordResetPage')
 
 //const path = require('path')
 //const date = require('Date')
@@ -38,7 +40,7 @@ function delay(interval)
    }).timeout(interval + 100) // The extra 100ms should guarantee the test will not fail due to exceeded timeout
 }
 
-describe('Login to roundz with email and password then check default state', function () {
+describe('Send password reset email', function () {
   this.timeout(60000)
   let app
 
@@ -85,13 +87,27 @@ describe('Login to roundz with email and password then check default state', fun
       .click(loginPage.loginExistingAccount)
   })
 
-  it('Test Case 002: should login with email and password', function (){
+  it('Click Forgot Password Link', function (){
     return app.client.windowByIndex(loginPage.windowIndex)
-      .click(loginPage.)
+      .click(loginPage.forgotPasswordLink)
   })
 
+  it('Enter email address and click Send', function(){
+    return app.client.windowByIndex(passwordResetPage.windowIndex)
+      .waitForEnabled(passwordResetPage.passwordResetEmailTextField)
+      .clearElement(passwordResetPage.passwordResetEmailTextField)
+      .setValue(passwordResetPage.passwordResetEmailTextField, testData.emailAddress_01)
+      .click(passwordResetPage.sendButton)
+  })
 
+  delay(10000)
+  
+  it('Test Case 03: Password reset email successfully sent message appears', function(){
+    return app.client.windowByIndex(passwordResetPage.windowIndex)
+    .getText('body').should.eventually.contain(passwordResetPage.passwordResetStatusParagraphTextSuccess)
+  })
 
+ //Closing
   it('Click Close button', function (){
     return app.client.windowByIndex(currentRoomWindow.windowIndex)
       .click(currentRoomWindow.closeButton)
