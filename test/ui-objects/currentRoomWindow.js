@@ -30,4 +30,10 @@ module.exports = {
     //screenshareSTatusOffIcon: '#app > div > footer > v-row > button:nth-child(2) > div > div > i',
     //screenshareSTatusOnIcon: '#screenShareStatusIcon.icon.icon.icon-screen-off'
     //screenshareSTatusOnIcon: '#app > div > footer > v-row > button.control_btn.control_on.btn.btn--flat > div > div > i'    
-}
+
+    // current Room Pane
+    //avatar: '#app > div.application--wrap > main > div > div > div > div.container.pa-0.wrap.justify-center.fluid > div > div.avatar_repeat.pa-0.ma-0 > div > div > div > img',
+    //avatar: '#app > div.application--wrap > main > div > div > div > div.container.pa-0.wrap.justify-center.fluid > div > div.avatar_repeat.pa-0.ma-0 > div > div > div',
+    avatar: '#app > div.application--wrap > main > div > div > div > div.container.pa-0.wrap.justify-center.fluid > div > div.avatar_repeat.pa-0.ma-0 > div > div',
+    avatarNoImage: '#app > div.application--wrap > main > div > div > div > div.container.pa-0.wrap.justify-center.fluid > div > div.avatar_repeat.pa-0.ma-0 > div > div > div > span' 
+}   

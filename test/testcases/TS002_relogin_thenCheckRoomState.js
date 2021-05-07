@@ -99,7 +99,6 @@ describe('Re-login, and check that you are in last logged-in room', function () 
   //Preparation for Test Case 011
   it('Select a room', function (){
     return app.client.windowByIndex(roomListWindow.windowIndex)    
-    //.click(roomListWindow.toggleOfflineMember)
     .click(roomListWindow.roomName01)
   })
  
