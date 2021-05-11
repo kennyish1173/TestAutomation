@@ -12,7 +12,8 @@ module.exports = {
     //settingsMenuIcon: '#app > div > div.header > div:nth-child(2) > div.layout.row.wrap.justify-center.align-center > div:nth-child(2) > i', //old
     //settingsMenuIcon: '#topHeader > div > div > div.layout.row.wrap.justify-center.align-center > div.flex.xs6 > i', //ver 0.7.110
     settingsMenuIcon: '#topHeader > div > div:nth-child(2) > i', //ver 0.7.115
-    currentRoomName: "#app > div.application--wrap > aside > div:nth-child(1) > div > div:nth-child(1) > div > div > div.room_box.current_room > div.room > div.room_name",
+    //currentRoomName: "#app > div.application--wrap > aside > div:nth-child(1) > div > div:nth-child(1) > div > div > div.room_box.current_room > div.room > div.room_name", //old
+    currentRoomName: '#app > div.application--wrap > main > div > div > div > div:nth-child(1) > div',
     //micButton: '#micButton',
     //micButton: '#app > div > footer > v-row > button:nth-child(1)',
     //micStatusIcon: '#micStatusIcon.icon.icon.icon-mic-off',
