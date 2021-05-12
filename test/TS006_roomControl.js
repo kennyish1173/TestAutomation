@@ -160,7 +160,10 @@ describe('Test room related control', function () {
     })
   })
 
-
+  it('Test Case 36: Should toggle off Lobby display', function(){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+    .click(roomListWindow.toggleOfflineMember)
+  })
 
 
   //Closing
