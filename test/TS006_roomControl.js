@@ -21,6 +21,8 @@ const { should } = require('chai')
 const { SSL_OP_EPHEMERAL_RSA } = require('constants')
 const passwordResetPage = require('./ui-objects/passwordResetPage')
 const { passwordResetEmailTextField, passwordResetStatusParagraph } = require('./ui-objects/passwordResetPage')
+const manageRoomPopup = require('./ui-objects/manageRoomPopup')
+const testdata = require('./test_data/testdata')
 
 //const path = require('path')
 //const date = require('Date')
@@ -165,16 +167,186 @@ describe('Test room related control', function () {
     .click(roomListWindow.toggleOfflineMember)
   })
 
+  // Test Case 37 ----------------------------------
+  it('Click Manage Room button', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex)
+      .click(roomListWindow.manageRoomButton)
+  })
 
-  //Closing
-  // it('Click Close button', function (){
-  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
-  //     .click(currentRoomWindow.closeButton)
-  // })
+  it('Test Case 37: Should show Manage Room popup', function(){
+      return app.client.getWindowCount().then(function (count) {
+        count.should.equal(7)
+      })
+    })
 
-  // it('Click Shutdown App button', function (){
-  //   return app.client.windowByIndex(closeWindow.windowIndex)
-  //     .click(closeWindow.shutdownAppButton)
-  // })
+  //  Test Case 38 ----------------------------------
+  it('Input room name to add', function (){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .waitForEnabled(manageRoomWindow.roomNameTextField)
+      .clearElement(manageRoomWindow.roomNameTextField)
+      .setValue(manageRoomWindow.roomNameTextField,testData.newRoom)
+  })
+
+  it('Click Add New Room button', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .click(manageRoomWindow.createNewRoomButton)
+  })
+
+  delay(2000)
+
+  it('Test Case 38: Should show newly added room', function(){
+      return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.thirdRoomName).then(function (getThirdRoomName) {
+        console.log("New room: " + getThirdRoomName)
+        expect(getThirdRoomName).to.equal(testData.newRoom)
+      })
+  })
+  
+  // Test Case 40 -------------------------------------------------------
+  it('Input existing room name', function (){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .waitForEnabled(manageRoomWindow.roomNameTextField)
+      .clearElement(manageRoomWindow.roomNameTextField)
+      .setValue(manageRoomWindow.roomNameTextField,testData.newRoom)
+  })
+
+  it('Click Add New Room button', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .click(manageRoomWindow.createNewRoomButton)
+  })
+
+  delay(2000)
+
+  it('Test Case 40: Should allow same room name', function(){
+      return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.thirdRoomName).then(function (getThirdRoomName) {
+        console.log("New room: " + getThirdRoomName)
+        expect(getThirdRoomName).to.equal(testData.newRoom)
+      })
+  })
+
+  // Test Case 41 ----------------------------------------------------
+  it('Click Edit Room button', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .click(manageRoomWindow.thirdRoomEditButton)
+  })
+
+  delay(1000)
+
+  it('Rename room', function (){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex) //to do variablize
+      .waitForEnabled(manageRoomWindow.editRoomNameTextField)
+      //.clearElement(manageRoomWindow.editRoomNameTextField)
+      .setValue(manageRoomWindow.editRoomNameTextField,testData.renameRoom)
+  })
+
+
+  it('Click save button', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex) //variablize
+      .click(manageRoomWindow.saveEditRoomButton)
+  })
+
+  delay(1000)
+  
+  it('Test Case 41: Should be able to modify room name', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.thirdRoomName).then(function (getThirdRoomName) {
+      console.log("New room: " + getThirdRoomName)
+      expect(getThirdRoomName).to.equal(testData.newRoom + testData.renameRoom)
+    })
+  })
+
+
+  //Delete Created room
+  it('Click Delete Room button', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .click(manageRoomWindow.thirdRoomDeleteButton)
+  })  
+
+  delay(2000)
+
+  it('Test Case 42: Click delete confirmation button to delete room', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex) //to do variablize
+      .click(manageRoomWindow.confirmDeleteButton)
+  })
+
+  delay(1000)
+
+
+  // Test Case 42 -------------------------------------------------------
+  it('Click Delete Room button', function(){
+      return app.client.windowByIndex(manageRoomWindow.windowIndex)
+        .click(manageRoomWindow.thirdRoomDeleteButton)
+  })  
+
+  delay(2000)
+  
+  it('Test Case 42: Click delete confirmation button to delete room', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex) //variablize
+      .click(manageRoomWindow.confirmDeleteButton)
+  })
+
+  delay(1000)
+
+  // Test Case 39-1 (null error) -------------------------------------------------
+  it('Input null as room name', function (){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .waitForEnabled(manageRoomWindow.roomNameTextField)
+      .clearElement(manageRoomWindow.roomNameTextField)
+      .setValue(manageRoomWindow.roomNameTextField,"")
+  })
+
+  it('Click Add New Room button', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .click(manageRoomWindow.createNewRoomButton)
+  })
+
+  delay(2000)
+
+  it('Should show null error message', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.errorMessage).then(function (getErrorMessage) {
+      console.log("error message: " + getErrorMessage)
+      expect(getErrorMessage).to.equal(manageRoomWindow.errorMessage_null)
+    })
+  })
+
+  // Test Case 39-2 (whitespace error) -------------------------------------------------
+  it('Input empty space as room name', function (){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .waitForEnabled(manageRoomWindow.roomNameTextField)
+      .clearElement(manageRoomWindow.roomNameTextField)
+      .setValue(manageRoomWindow.roomNameTextField," ")
+  })
+
+  it('Click Add New Room button', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .click(manageRoomWindow.createNewRoomButton)
+  })
+
+  delay(2000)
+
+  it('Test Case 39-2: Should error whitespace error message', function(){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.errorMessage).then(function (getErrorMessage) {
+      console.log("error message: " + getErrorMessage)
+      expect(getErrorMessage).to.equal(manageRoomWindow.errorMessage_whitespace)
+    })
+  })
+
+
+  // Test Case 43 -----------------------------------------------------------
+  it('Test Case 43: Close Manage Room window', function (){
+    return app.client.windowByIndex(manageRoomWindow.windowIndex)
+      .click(manageRoomWindow.closeButton)
+  })
+
+  delay(1000)
+  
+//Closing
+  it('Click Close button', function (){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+      .click(currentRoomWindow.closeButton)
+  })
+
+  it('Click Shutdown App button', function (){
+    return app.client.windowByIndex(closeWindow.windowIndex)
+      .click(closeWindow.shutdownAppButton)
+  })
  })
  
