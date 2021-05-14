@@ -6,5 +6,7 @@ module.exports = {
     password_02: 'p3jL09bV',
     room_01: 'my room',
     room_02: '集合部屋',
+    newRoom: 'ぴかピカroom',
+    renameRoom: 'リネーム部屋',
     offlineMember_01: 'roundz.tester@gmail.com'
 }
