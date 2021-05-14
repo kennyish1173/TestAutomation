@@ -114,58 +114,58 @@ describe('Test room related control', function () {
 
   delay(5000)
 
-  // it('Get current room name', function (){
-  //   return app.client.windowByIndex(currentRoomWindow.windowIndex).getText(currentRoomWindow.currentRoomName).then(function (getRoomName) {
-  //     currentRoom = getRoomName
-  //     console.log("Current room: " + currentRoom)
-  //   })
-  // })
+  it('Get current room name', function (){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex).getText(currentRoomWindow.currentRoomName).then(function (getRoomName) {
+      currentRoom = getRoomName
+      console.log("Current room: " + currentRoom)
+    })
+  })
 
-  // it('Should be in selected room', function (){
-  //   expect(currentRoom).to.equal(testData.room_01)
-  // })
+  it('Should be in selected room', function (){
+    expect(currentRoom).to.equal(testData.room_01)
+  })
 
-  // it('Select a different room', function (){
-  //   return app.client.windowByIndex(roomListWindow.windowIndex)
-  //   .click(roomListWindow.roomName02)
-  // })
+  it('Select a different room', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex)
+    .click(roomListWindow.roomName02)
+  })
 
-  // delay(5000)
+  delay(5000)
 
-  // it('Get current room name', function (){
-  //   return app.client.windowByIndex(currentRoomWindow.windowIndex).getText(currentRoomWindow.currentRoomName).then(function (getRoomName) {
-  //     currentRoom = getRoomName
-  //     console.log("Current room: " + currentRoom)
-  //   })
-  // })
+  it('Get current room name', function (){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex).getText(currentRoomWindow.currentRoomName).then(function (getRoomName) {
+      currentRoom = getRoomName
+      console.log("Current room: " + currentRoom)
+    })
+  })
 
-  // it('Test Case 30: Should be able to switch room', function (){
-  //   expect(currentRoom).to.equal(testData.room_02)
-  // })
+  it('Test Case 30: Should be able to switch room', function (){
+    expect(currentRoom).to.equal(testData.room_02)
+  })
   
-  // it('Toggle show lobby', function(){
-  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
-  //   .click(roomListWindow.toggleOfflineMember)
-  // })
+  it('Toggle show lobby', function(){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+    .click(roomListWindow.toggleOfflineMember)
+  })
 
-  // it('Should show text \'Lobby\'', function(){
-  //   return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.lobbyText).then(function (getLobbyText) {
-  //     console.log("Lobby text: " + getLobbyText)
-  //     expect(getLobbyText).to.match(/ロビー/)
-  //   })
-  // })
+  it('Should show text \'Lobby\'', function(){
+    return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.lobbyText).then(function (getLobbyText) {
+      console.log("Lobby text: " + getLobbyText)
+      expect(getLobbyText).to.match(/ロビー/)
+    })
+  })
 
-  // it('Test Case 35: Should show offline member', function(){
-  //   return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.offlinemember01).then(function (getOfflineMember) {
-  //     console.log("Offline member: " + getOfflineMember)
-  //     expect(getOfflineMember).to.equal(testData.offlineMember_01)
-  //   })
-  // })
+  it('Test Case 35: Should show offline member', function(){
+    return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.offlinemember01).then(function (getOfflineMember) {
+      console.log("Offline member: " + getOfflineMember)
+      expect(getOfflineMember).to.equal(testData.offlineMember_01)
+    })
+  })
 
-  // it('Test Case 36: Should toggle off Lobby display', function(){
-  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
-  //   .click(roomListWindow.toggleOfflineMember)
-  // })
+  it('Test Case 36: Should toggle off Lobby display', function(){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+    .click(roomListWindow.toggleOfflineMember)
+  })
 
   // Test Case 37 ----------------------------------
   it('Click Manage Room button', function (){
