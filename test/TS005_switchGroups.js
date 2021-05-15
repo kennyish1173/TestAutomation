@@ -46,7 +46,7 @@ function delay(interval)
    }).timeout(interval + 100) // The extra 100ms should guarantee the test will not fail due to exceeded timeout
 }
 
-describe('Test the invite member button / screen', function () {
+describe('Switch between groups', function () {
   this.timeout(60000)
   let app
 
@@ -107,25 +107,40 @@ describe('Test the invite member button / screen', function () {
   delay(7000)
 
   //Main Scenario
-  it('Click invite button', function (){
+  it('Click group selector', function (){
     return app.client.windowByIndex(roomListWindow.windowIndex)
-    .click(roomListWindow.inviteButton)
+    .click(roomListWindow.groupSelector)
   })
 
   delay(2000)
 
-  it('Test Caes 44: Should show the Invite window', function (){
-    return app.client.windowByIndex(settingsWindow.windowIndex_2).getText(settingsWindow.memberInvitationTitle).then(function (getPageTitle) {
-      console.log("Page header: " + getPageTitle)
-      expect(getPageTitle).to.equal(settingsWindow.memberInvitationTitleText)
+  it('Test Case 27: Select different group', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex)
+    .click(roomListWindow.group02)
+  })
+
+  delay(5000) //wait for app to relogin
+
+  it('Click expand icon', function(){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+    .click(currentRoomWindow.expandIcon)
+  })
+
+  delay(1000)
+
+  it('Test Caes 28: Should show current group', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.groupSelector).then(function (groupName) {
+      console.log("Page header: " + groupName)
+      expect(groupName).to.equal(testData.group_02)
     })
   })
 
-  it('Click close button', function (){
-    return app.client.windowByIndex(settingsWindow.windowIndex_2)
-    .click(settingsWindow.closeButton)
+  it('Test Case 29: Should show group\'s room', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.roomName01).then(function (getRoomName) {
+      console.log("room: " + getRoomName)
+      expect(getRoomName).to.equal(testData.group_02_room_01)
+    })
   })
-
   
 //Closing
   it('Click Close button', function (){
