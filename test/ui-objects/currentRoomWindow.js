@@ -4,11 +4,11 @@ module.exports = {
     closeButton2: '#topHeader > div > div.buttons > div.close_win > span > i',
     //roomListMenuIcon: '#app > div > div.header > div:nth-child(2) > div.layout.row.wrap.justify-center.align-center > div:nth-child(1) > i', //old
     //roomListMenuIcon: '#topHeader > div > div > div.teamList > div > div:nth-child(3)', //not interactable
-    //rommListMenuIconExpand: '#topHeader > div > div > div.teamList > div > div.flex.xs1.offset-xs1 > i', //ver 0.7.110
-    //roomListMenuIconExpand: '#topHeader > div > div.header_bottom > div.left_arrow > i', //ver 0.7.115
-    roomListMenuIconExpand: '#topHeader > div > div.header_bottom > div.left_arrow',
-    //rommListMenuIconCollapse: '#topHeader > div > div > div.teamList > div > div.flex.xs1.offset-xs1', //ver 0.7.110
-    roomListMenuIconCollapse: '#topHeader > div > div.header_bottom > div.right_arrow', //ver 0.7.115
+    //expandIcon: '#topHeader > div > div > div.teamList > div > div.flex.xs1.offset-xs1 > i', //ver 0.7.110
+    //expandIcon: '#topHeader > div > div.header_bottom > div.left_arrow > i', //ver 0.7.115
+    expandIcon: '#topHeader > div > div.header_bottom > span:nth-child(3) > span > div > i',
+    //collapseIcon: '#topHeader > div > div > div.teamList > div > div.flex.xs1.offset-xs1', //ver 0.7.110
+    collapseIcon: '#topHeader > div > div.header_bottom > div.right_arrow', //ver 0.7.115
     //settingsMenuIcon: '#app > div > div.header > div:nth-child(2) > div.layout.row.wrap.justify-center.align-center > div:nth-child(2) > i', //old
     //settingsMenuIcon: '#topHeader > div > div > div.layout.row.wrap.justify-center.align-center > div.flex.xs6 > i', //ver 0.7.110
     settingsMenuIcon: '#topHeader > div > div:nth-child(2) > i', //ver 0.7.115

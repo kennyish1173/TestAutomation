@@ -8,5 +8,8 @@ module.exports = {
     room_02: '集合部屋',
     newRoom: 'ぴかピカroom',
     renameRoom: 'リネーム部屋',
-    offlineMember_01: 'roundz.tester@gmail.com'
+    offlineMember_01: 'roundz.tester@gmail.com',
+    group_01: 'Spectron自動化',
+    group_02: '自動化試験用チーム',
+    group_02_room_01: 'キュービクル'
 }

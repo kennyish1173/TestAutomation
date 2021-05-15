@@ -1,8 +1,13 @@
 module.exports = {
     windowIndex: 3,
+    groupSelector: '#topHeader > div > div.header_bottom > div > div:nth-child(1) > div > div > div > div',
+    group01: '#app > div.menu__content.menuable__content__active > div > div:nth-child(1) > a > div > div', //Spectron自動化
+    group02: '#app > div.menu__content.menuable__content__active > div > div:nth-child(2) > a > div > div', //自動化試験用チーム
     currentRoom: '#app > div.application--wrap > aside > div:nth-child(1) > div > div:nth-child(1) > div > div > div.room_box.current_room',
     //roomName01: '#app > div.application--wrap > div > div > div:nth-child(1) > div.room_list > div > div:nth-child(1) > div > div.room_name', //old
-    roomName01: '#app > div.application--wrap > aside > div:nth-child(1) > div > div:nth-child(1) > div > div > div:nth-child(1)',
+    //roomName01:             '#app > div.application--wrap > aside > div:nth-child(1) > div > div:nth-child(1) > div > div > div:nth-child(1)', //no member
+    roomName01: '#app > div.application--wrap > aside > div:nth-child(1) > div > div:nth-child(1) > div > div > div:nth-child(1) > div.room > div.room_name',
+
     //roomName02: '#app > div.application--wrap > div > div > div:nth-child(1) > div.room_list > div > div:nth-child(2) > div > div.room_name', //old
     roomName02: '#app > div.application--wrap > aside > div:nth-child(1) > div > div:nth-child(1) > div > div > div:nth-child(2)',
     //toggleOfflineMember : 'div.input-group--selection-controls__ripple' // old
