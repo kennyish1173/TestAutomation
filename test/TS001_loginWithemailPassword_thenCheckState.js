@@ -1,27 +1,30 @@
 
 const hooks = require('./utility/hooks')
 const helper = require('./utility/helper')
+
+//UI Objects
 const onBoardingPage = require('./ui-objects/onboardingPage')
 const loginPage = require('./ui-objects/loginPage')
 const currentRoomWindow = require('./ui-objects/currentRoomWindow')
 const roomListWindow = require('./ui-objects/roomListWindow')
-const testData = require('./test_data/testdata')
-//const onboarding = require('./ui-objects/onboardingPage')
 const settingsWindow = require('./ui-objects/settingsWindow')
 const accountSettingsWindow = require('./ui-objects/accountSettingsWindow')
 const manageRoomWindow= require('./ui-objects/manageRoomPopup')
 const closeWindow = require('./ui-objects/closeWindow')
 
+//Test data
+const testData = require('./test_data/testdata')
+
+//Etc.
 const assert = require('assert')
 const expect = require('chai').expect
 const { systemPreferences, app } = require('electron')
 const { focusOnWin } = require('./utility/helper')
 const { should } = require('chai')
 const { SSL_OP_EPHEMERAL_RSA } = require('constants')
+const testdata = require('./test_data/testdata')
 
-//const path = require('path')
-//const date = require('Date')
-
+//Variables
 var selectedRoom
 var currentRoom
 var roomA
@@ -72,7 +75,7 @@ describe('Login to roundz with email and password then check default state', fun
       .click(onBoardingPage.nextButton)
   })
 
-  delay(5000)
+  delay(testData.waitLongLoad)
 
   it('Shows Login page', function () {
     return app.client.getWindowCount().then(function (count) {
@@ -96,7 +99,7 @@ describe('Login to roundz with email and password then check default state', fun
       .click(loginPage.loginButton)
   })
 
-  delay(10000)
+  delay(testData.waitLogin)
 
   it('Test Case 008: Should launch Current Room window', function () {
     return app.client.getWindowCount().then(function (count) {

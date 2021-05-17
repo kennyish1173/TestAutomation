@@ -70,7 +70,7 @@ describe('Re-login, and check that you are in last logged-in room', function () 
       .click(onBoardingPage.nextButton)
   })
 
-  delay(5000)
+  delay(testData.waitLongLoad)
 
   it('Shows Login page', function () {
     return app.client.getWindowCount().then(function (count) {
@@ -94,7 +94,7 @@ describe('Re-login, and check that you are in last logged-in room', function () 
       .click(loginPage.loginButton)
   })
 
-  delay(10000)
+  delay(testData.waitLogin)
 
   //Preparation for Test Case 011
   it('Select a room', function (){
@@ -129,7 +129,7 @@ describe('Re-login, and check that you are in last logged-in room', function () 
       .click(accountSettingsWindow.logoutButton)
   })
 
-  delay(5000)
+  delay(testData.waitLongLoad)
 
   //Preparation for Test Case 011
   it('Select Login with Existig Account', function (){
@@ -149,7 +149,7 @@ describe('Re-login, and check that you are in last logged-in room', function () 
       .click(loginPage.loginButton)
   })
 
-  delay(10000)
+  delay(testData.waitLogin)
 
   //Preparation for Test Case 011
   it('Get cuurent room name', function (){

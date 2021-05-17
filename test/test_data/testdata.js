@@ -11,5 +11,12 @@ module.exports = {
     offlineMember_01: 'roundz.tester@gmail.com',
     group_01: 'Spectron自動化',
     group_02: '自動化試験用チーム',
-    group_02_room_01: 'キュービクル'
+    group_02_room_01: 'キュービクル',
+
+    //wait time
+    waitLogin: 5000,
+    waitLongLoad: 7000,
+    waitMidLoad: 5000,
+    waitLoad: 3000,
+    waitScreen: 1000
 }

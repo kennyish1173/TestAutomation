@@ -80,7 +80,7 @@ describe('Test the invite member button / screen', function () {
       .click(onBoardingPage.nextButton)
   })
 
-  delay(5000)
+  delay(testData.waitLongLoad)
 
   it('Shows Login page', function () {
     return app.client.getWindowCount().then(function (count) {
@@ -104,7 +104,7 @@ describe('Test the invite member button / screen', function () {
       .click(loginPage.loginButton)
   })
 
-  delay(7000)
+  delay(testData.waitLogin)
 
   //Main Scenario
   it('Click invite button', function (){
@@ -112,7 +112,7 @@ describe('Test the invite member button / screen', function () {
     .click(roomListWindow.inviteButton)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   it('Test Caes 44: Should show the Invite window', function (){
     return app.client.windowByIndex(settingsWindow.windowIndex_2).getText(settingsWindow.memberInvitationTitle).then(function (getPageTitle) {
