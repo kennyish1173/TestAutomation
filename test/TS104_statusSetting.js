@@ -78,7 +78,7 @@ describe('Test Status settings', function () {
       .click(onBoardingPage.nextButton)
   })
 
-  delay(5000)
+  delay(testData.waitLongLoad)
 
   it('Shows Login page', function () {
     return app.client.getWindowCount().then(function (count) {
@@ -102,7 +102,7 @@ describe('Test Status settings', function () {
       .click(loginPage.loginButton)
   })
 
-  delay(7000)
+  delay(testData.waitLogin)
 
   //Main Scenario
   it('Select a room', function (){
@@ -110,15 +110,16 @@ describe('Test Status settings', function () {
     .click(roomListWindow.roomName01)
   })
 
-  delay(2000)
+  delay(testData.waitLoad)
 
   it('click profile avatar', function (){
     return app.client.windowByIndex(roomListWindow.windowIndex)
     .click(currentRoomWindow.avatar)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
+  //To Do: figure getHtml to work
   // //Preparation for Test Case 14
   // it('Get current avatar state', function(){
   //   return app.client.windowByIndex(myStatusWindow.windowIndex).getHTML(myStatusWindow.avatar).then(function (getAvatarHtml) {
@@ -150,7 +151,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.setToBusyButton)
   })
 
-  delay(5000)
+  delay(testData.waitLoad)
 
   //Preparation for Test Case 20
   it('Get currently displayed status', function(){
@@ -171,7 +172,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.clearBusyStatusButton)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   //------------------------------------------
   // Test Case 21-1 (2hrs)
@@ -183,7 +184,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.statusTimeDropDownButton)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   //Preparation for Test Case 21-1
   it('Set Status time to two hours', function(){
@@ -197,7 +198,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.setToBusyButton)
   })
 
-  delay(5000)
+  delay(testData.waitLoad)
 
   //Preparation for Test Case 21-1
   it('Get currently displayed status', function(){
@@ -230,7 +231,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.clearBusyStatusButton)
   })
 
-  delay(5000)
+  delay(testData.waitLoad)
 
   //------------------------------------------
   // Test Case 21-2 (4 hours)
@@ -253,7 +254,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.setToBusyButton)
   })
 
-  delay(5000)
+  delay(testData.waitLoad)
 
   //Preparation for Test Case 21-2
   it('Get currently displayed status', function(){
@@ -286,7 +287,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.clearBusyStatusButton)
   })
 
-  delay(5000)
+  delay(testData.waitLoad)
 
   //------------------------------------------
   // Test Case 21-3 (Whole Day)
@@ -309,7 +310,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.setToBusyButton)
   })
 
-  delay(5000)
+  delay(testData.waitLoad)
 
   //Preparation for Test Case 21-3
   it('Get currently displayed status', function(){
@@ -342,7 +343,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.clearBusyStatusButton)
   })
 
-  delay(5000)
+  delay(testData.waitLoad)
 
   //------------------------------------------
 
@@ -354,7 +355,7 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.statusDropDownButton)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   //Preparation for Test Case 22
   it('Select any status', function(){
@@ -362,72 +363,83 @@ describe('Test Status settings', function () {
     .click(myStatusWindow.statusLetsTalk)
   })
 
-  delay(5000)
+  delay(testData.waitMidLoad) //wait for notificatin to disappear
+
+  it('click profile avatar', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex)
+    .click(currentRoomWindow.avatar)
+  })
+
+  delay(testData.waitLoad)
 
   //Preparation for Test Case 22
   it('Get currently displayed status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
+    return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
       currentStatus = getStatusText
       console.log("Status Selected: " + currentStatus)
     })
   })
-
-  it('Test Case: 22 Set status', function(){
+ 
+  it('Test Case: 22 Able to set status', function(){
     expect(currentStatus).to.match(/話しましょう/)
   })
-
+ 
 
   //Preparation for Test Case 23
   it('Click Status drop-down button', function (){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    return app.client.windowByIndex(myStatusWindow.windowIndex02)
     .click(myStatusWindow.statusDropDownButton)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   //Preparation for Test Case 23
   it('Change status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    return app.client.windowByIndex(myStatusWindow.windowIndex02)
     .click(myStatusWindow.statusOutForMeal)
   })
 
-  delay(5000)
+  delay(testData.waitLoad) //wait for notificatin to disappear
+
+  it('click profile avatar', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex)
+    .click(currentRoomWindow.avatar)
+  })
+
+  delay(testData.waitLoad)
 
   //Preparation for Test Case 23
-  it('Get currently displayed status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
-      currentStatus = getStatusText
-      console.log("Status Selected: " + currentStatus)
+  it('Test Case 23: Should change status', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
+      console.log("Current Status: " + getStatusText)
+      expect(getStatusText).to.match(/食事中/)
     })
   })
-
-  it('Test Case: 23 Change status', function(){
-    expect(currentStatus).to.match(/食事中/)
-  })
-
-  delay(5000)
 
   //Preparation for Test Case 24
   it('Click Clear Status button', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    return app.client.windowByIndex(myStatusWindow.windowIndex02)
     .click(myStatusWindow.clearStatus)
   })
 
-  delay(5000)
+  delay(testData.waitLoad) //wait for notificatin to disappear
+
+  it('click profile avatar', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex)
+    .click(currentRoomWindow.avatar)
+  })
+
+  delay(testData.waitLoad)
 
   //Preparation for Test Case 24
   it('Get currently displayed status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
-      currentStatus = getStatusText
-      console.log("Status cleared: " + currentStatus)
+    return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
+      console.log("Status cleared: " + getStatusText)
+      expect(getStatusText).to.match(/ステータスを選択/)
     })
   })
-
-  it('Test Case: 24 Clear status', function(){
-    expect(currentStatus).to.match(/ステータスを選択/)
-  })
   
-
+  // Spectron bug? can't focus on main window after popup notification
   //Closing
   // it('Click Close button', function (){
   //   return app.client.windowByIndex(currentRoomWindow.windowIndex)

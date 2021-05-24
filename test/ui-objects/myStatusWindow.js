@@ -1,5 +1,6 @@
 module.exports = {
     windowIndex : 3,
+    windowIndex02: 1, // when opened second time onwards
     messageBoxButton: '#myStatus > div.header_userProfile > div.shoulder_btn > span > span > span > button',
     avatar: '#myStatus > div.header_userProfile > div.avatar.small_avatar.teal.lighten-5 > div',
     name: '#myStatus > div.header_userProfile > div.my_name',

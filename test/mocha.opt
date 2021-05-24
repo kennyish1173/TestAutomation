@@ -1,1 +1,17 @@
---timeout 60000
+  framework: 'webdriverio',
+
+  mochaOpts: {
+      reporter: 'mochawesome-screenshots',
+      reporterOptions: {
+          reportDir: 'customReportDir',
+          reportName: 'customReportName',
+          reportTitle: 'customReportTitle',
+          reportPageTitle: 'customReportPageTitle',
+          takePassedScreenshot: true,
+          clearOldScreenshots: true,
+          shortScrFileNames: false,
+          jsonReport: false,
+          multiReport: false
+      },
+      timeout: 600000
+  },

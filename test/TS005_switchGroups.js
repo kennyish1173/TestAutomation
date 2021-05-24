@@ -80,7 +80,7 @@ describe('Switch between groups', function () {
       .click(onBoardingPage.nextButton)
   })
 
-  delay(5000)
+  delay(testData.waitLongLoad)
 
   it('Shows Login page', function () {
     return app.client.getWindowCount().then(function (count) {
@@ -104,7 +104,7 @@ describe('Switch between groups', function () {
       .click(loginPage.loginButton)
   })
 
-  delay(7000)
+  delay(testData.waitLogin)
 
   //Main Scenario
   it('Click group selector', function (){
@@ -112,21 +112,21 @@ describe('Switch between groups', function () {
     .click(roomListWindow.groupSelector)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   it('Test Case 27: Select different group', function (){
     return app.client.windowByIndex(roomListWindow.windowIndex)
     .click(roomListWindow.group02)
   })
 
-  delay(5000) //wait for app to relogin
+  delay(testData.waitLogin) //wait for app to relogin
 
   it('Click expand icon', function(){
     return app.client.windowByIndex(currentRoomWindow.windowIndex)
     .click(currentRoomWindow.expandIcon)
   })
 
-  delay(1000)
+  delay(testData.waitScreen)
 
   it('Test Caes 28: Should show current group', function (){
     return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.groupSelector).then(function (groupName) {

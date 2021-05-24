@@ -74,7 +74,7 @@ describe('Send password reset email', function () {
       .click(onBoardingPage.nextButton)
   })
 
-  delay(5000)
+  delay(testData.waitLongLoad)
 
   it('Shows Login page', function () {
     return app.client.getWindowCount().then(function (count) {
@@ -100,7 +100,7 @@ describe('Send password reset email', function () {
       .click(passwordResetPage.sendButton)
   })
 
-  delay(10000)
+  delay(testData.waitLogin)
   
   it('Test Case 03: Password reset email successfully sent message appears', function(){
     return app.client.windowByIndex(passwordResetPage.windowIndex)

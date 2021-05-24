@@ -80,7 +80,7 @@ describe('Test room related control', function () {
       .click(onBoardingPage.nextButton)
   })
 
-  delay(5000)
+  delay(testData.waitLongLoad)
 
   it('Shows Login page', function () {
     return app.client.getWindowCount().then(function (count) {
@@ -104,7 +104,7 @@ describe('Test room related control', function () {
       .click(loginPage.loginButton)
   })
 
-  delay(7000)
+  delay(testData.waitLogin)
 
   //Main Scenario
   it('Select a room', function (){
@@ -112,7 +112,7 @@ describe('Test room related control', function () {
     .click(roomListWindow.roomName01)
   })
 
-  delay(5000)
+  delay(testData.waitLoad)
 
   it('Get current room name', function (){
     return app.client.windowByIndex(currentRoomWindow.windowIndex).getText(currentRoomWindow.currentRoomName).then(function (getRoomName) {
@@ -130,7 +130,7 @@ describe('Test room related control', function () {
     .click(roomListWindow.roomName02)
   })
 
-  delay(5000)
+  delay(testData.waitLoad)
 
   it('Get current room name', function (){
     return app.client.windowByIndex(currentRoomWindow.windowIndex).getText(currentRoomWindow.currentRoomName).then(function (getRoomName) {
@@ -192,7 +192,7 @@ describe('Test room related control', function () {
       .click(manageRoomWindow.createNewRoomButton)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   it('Test Case 38: Should show newly added room', function(){
       return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.thirdRoomName).then(function (getThirdRoomName) {
@@ -214,7 +214,7 @@ describe('Test room related control', function () {
       .click(manageRoomWindow.createNewRoomButton)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   it('Test Case 40: Should allow same room name', function(){
       return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.thirdRoomName).then(function (getThirdRoomName) {
@@ -229,7 +229,7 @@ describe('Test room related control', function () {
       .click(manageRoomWindow.thirdRoomEditButton)
   })
 
-  delay(1000)
+  delay(testData.waitScreen)
 
   it('Rename room', function (){
     return app.client.windowByIndex(manageRoomWindow.windowIndex) //to do variablize
@@ -244,7 +244,7 @@ describe('Test room related control', function () {
       .click(manageRoomWindow.saveEditRoomButton)
   })
 
-  delay(1000)
+  delay(testData.waitScreen)
   
   it('Test Case 41: Should be able to modify room name', function(){
     return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.thirdRoomName).then(function (getThirdRoomName) {
@@ -260,14 +260,14 @@ describe('Test room related control', function () {
       .click(manageRoomWindow.thirdRoomDeleteButton)
   })  
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   it('Test Case 42: Click delete confirmation button to delete room', function(){
     return app.client.windowByIndex(manageRoomWindow.windowIndex) //to do variablize
       .click(manageRoomWindow.confirmDeleteButton)
   })
 
-  delay(1000)
+  delay(testData.waitScreen)
 
 
   // Test Case 42 -------------------------------------------------------
@@ -276,14 +276,14 @@ describe('Test room related control', function () {
         .click(manageRoomWindow.thirdRoomDeleteButton)
   })  
 
-  delay(2000)
+  delay(testData.waitScreen)
   
   it('Test Case 42: Click delete confirmation button to delete room', function(){
     return app.client.windowByIndex(manageRoomWindow.windowIndex) //variablize
       .click(manageRoomWindow.confirmDeleteButton)
   })
 
-  delay(1000)
+  delay(testData.waitScreen)
 
   // Test Case 39-1 (null error) -------------------------------------------------
   it('Input null as room name', function (){
@@ -298,7 +298,7 @@ describe('Test room related control', function () {
       .click(manageRoomWindow.createNewRoomButton)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   it('Should show null error message', function(){
     return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.errorMessage).then(function (getErrorMessage) {
@@ -320,7 +320,7 @@ describe('Test room related control', function () {
       .click(manageRoomWindow.createNewRoomButton)
   })
 
-  delay(2000)
+  delay(testData.waitScreen)
 
   it('Test Case 39-2: Should error whitespace error message', function(){
     return app.client.windowByIndex(manageRoomWindow.windowIndex).getText(manageRoomWindow.errorMessage).then(function (getErrorMessage) {
@@ -336,7 +336,7 @@ describe('Test room related control', function () {
       .click(manageRoomWindow.closeButton)
   })
 
-  delay(1000)
+  delay(testData.waitScreen)
   
 //Closing
   it('Click Close button', function (){
