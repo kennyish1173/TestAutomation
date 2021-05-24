@@ -35,6 +35,9 @@ module.exports = {
     // current Room Pane
     //avatar: '#app > div.application--wrap > main > div > div > div > div.container.pa-0.wrap.justify-center.fluid > div > div.avatar_repeat.pa-0.ma-0 > div > div > div > img',
     //avatar: '#app > div.application--wrap > main > div > div > div > div.container.pa-0.wrap.justify-center.fluid > div > div.avatar_repeat.pa-0.ma-0 > div > div > div',
-    avatar: '#app > div.application--wrap > main > div > div > div > div.container.pa-0.wrap.justify-center.fluid > div > div.avatar_repeat.pa-0.ma-0 > div > div',
+    //avatar: '#app > div.application--wrap > main > div > div > div > div.container.pa-0.wrap.justify-center.fluid > div > div.avatar_repeat.pa-0.ma-0 > div > div', // ver 0.7.213
+    avatar: '#myData > div.avatar_item > div',
+    //#myData > div.avatar_item > div > div.avatar.avatar.teal.lighten-5 > img
+    
     avatarNoImage: '#app > div.application--wrap > main > div > div > div > div.container.pa-0.wrap.justify-center.fluid > div > div.avatar_repeat.pa-0.ma-0 > div > div > div > span' 
 }   
