@@ -19,6 +19,10 @@ module.exports = {
     defaultShortcutSetting: 'Windows+Alt',
     changeShortcutSettings: '右Control',
 
+    //Audio settings
+    speaker: 'スピーカー (High Definition Audio Device)(default)',
+    mic: 'Microphone (High Definition Audio Device)(default)',
+
     //wait time
     waitLogin: 5000,
     waitLongLoad: 7000,
