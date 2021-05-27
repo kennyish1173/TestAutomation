@@ -4,6 +4,8 @@ module.exports = {
     password_01: 'rtg#bzK1',
     emailAddress_02: 'roundz.autotester@gmail.com',
     password_02: 'p3jL09bV',
+
+    //room
     room_01: 'my room',
     room_02: '集合部屋',
     newRoom: 'ぴかピカroom',
@@ -12,6 +14,10 @@ module.exports = {
     group_01: 'Spectron自動化',
     group_02: '自動化試験用チーム',
     group_02_room_01: 'キュービクル',
+
+    //App settings
+    defaultShortcutSetting: 'Windows+Alt',
+    changeShortcutSettings: '右Control',
 
     //wait time
     waitLogin: 5000,

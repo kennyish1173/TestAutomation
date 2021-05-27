@@ -118,7 +118,7 @@ describe('Re-login, and check that you are in last logged-in room', function () 
   })
 
   //Preparation for Test Case 011
-   it('Open Account Settings window', function (){
+  it('Open Account Settings window', function (){
     return app.client.windowByIndex(settingsWindow.windowIndex)
       .click(settingsWindow.accountSettingsIcon)
   })

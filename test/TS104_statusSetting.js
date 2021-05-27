@@ -12,6 +12,7 @@ const accountSettingsWindow = require('./ui-objects/accountSettingsWindow')
 const manageRoomWindow= require('./ui-objects/manageRoomPopup')
 const closeWindow = require('./ui-objects/closeWindow')
 const myStatusWindow = require('./ui-objects/myStatusWindow')
+const appSettingsWindow = require('./ui-objects/appSettingsWindow')
 
 const assert = require('assert')
 const expect = require('chai').expect
