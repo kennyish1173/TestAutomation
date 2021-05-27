@@ -23,6 +23,14 @@ module.exports = {
     languageSetting: '#app > div > div.appli_setting_container > div > div:nth-child(1) > div > div:nth-child(4) > div > div.input-group__input > div.input-group__selections > div',
     languageSettingDropDown: '#app > div > div.appli_setting_container > div > div:nth-child(1) > div > div:nth-child(4) > div > div.input-group__input > div.input-group__selections',
     language_jap: '#app > div.menu__content.menu__content--select.menuable__content__active > div > div > div:nth-child(1) > a > div > div',
-    language_eng: '#app > div.menu__content.menu__content--select.menuable__content__active > div > div > div:nth-child(2) > a > div > div'
+    language_eng: '#app > div.menu__content.menu__content--select.menuable__content__active > div > div > div:nth-child(2) > a > div > div',
     
+    //Audio Settings
+    speakerSetting:         '#app > div > div.appli_setting_container > div > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > div.input-group__input > div.input-group__selections',
+    speakerSettingDropDown: '#app > div > div.appli_setting_container > div > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > div.input-group__input > div.input-group__selections',
+    speakerItem_01: '#app > div.menu__content.menu__content--select.menuable__content__active > div > div > div > a > div > div',
+    micSetting:         '#app > div > div.appli_setting_container > div > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div > div.input-group__input > div.input-group__selections',
+    micSettingDropDown: '#app > div > div.appli_setting_container > div > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div > div.input-group__input > div.input-group__selections',
+    micItem_01: '#app > div.menu__content.menu__content--select.menuable__content__active > div > div > div > a > div > div'
+
 }

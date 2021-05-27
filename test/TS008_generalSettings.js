@@ -47,7 +47,7 @@ function delay(interval)
    }).timeout(interval + 100) // The extra 100ms should guarantee the test will not fail due to exceeded timeout
 }
 
-describe('Test the invite member button / screen', function () {
+describe('Test General Settings', function () {
   this.timeout(60000)
   let app
 
