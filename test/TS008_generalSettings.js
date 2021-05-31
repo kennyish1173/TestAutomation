@@ -113,7 +113,7 @@ describe('Test General Settings', function () {
       .click(currentRoomWindow.settingsMenuIcon)
   })
 
-  it('Open App Settings window', function (){
+  it('Test Case 46: Open App Settings window', function (){
     return app.client.windowByIndex(settingsWindow.windowIndex)
       .click(settingsWindow.appSettingsIcon)
   })
