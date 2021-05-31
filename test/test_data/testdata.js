@@ -23,6 +23,9 @@ module.exports = {
     speaker: 'スピーカー (High Definition Audio Device)(default)',
     mic: 'Microphone (High Definition Audio Device)(default)',
 
+    //Profile setings
+    resetPasswordSentNotificationString: 'リセットのためのメールを送りました。メール本文内のリンクをクリックして新しいパスワードを設定後、新しいパスワードでログインし直してください。',
+
     //wait time
     waitLogin: 5000,
     waitLongLoad: 7000,
