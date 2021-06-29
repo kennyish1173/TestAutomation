@@ -1,6 +1,7 @@
 module.exports = {
     windowIndex : 2,
     notificationIndex: 5,
+    closeButton:'#app > div > div > div > div > div.header_close > button > div',
     profilePicture: '#app > div > div > div > form > div:nth-child(1) > div.avatar > div > img',
     addImageButton: '#app > div > div > div > form > div:nth-child(1) > div.avatar_btn > button:nth-child(1)',
     deleteImageButton: '#app > div > div > div > form > div:nth-child(1) > div.avatar_btn > button:nth-child(2)',

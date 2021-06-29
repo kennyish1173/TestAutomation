@@ -7,6 +7,7 @@ module.exports = {
     //expandIcon: '#topHeader > div > div > div.teamList > div > div.flex.xs1.offset-xs1 > i', //ver 0.7.110
     //expandIcon: '#topHeader > div > div.header_bottom > div.left_arrow > i', //ver 0.7.115
     expandIcon: '#topHeader > div > div.header_bottom > span:nth-child(3) > span > div > i',
+    //expandIcon: '#topHeader > div > div.header_bottom > span:nth-child(3)',
     //collapseIcon: '#topHeader > div > div > div.teamList > div > div.flex.xs1.offset-xs1', //ver 0.7.110
     collapseIcon: '#topHeader > div > div.header_bottom > div.right_arrow', //ver 0.7.115
     //settingsMenuIcon: '#app > div > div.header > div:nth-child(2) > div.layout.row.wrap.justify-center.align-center > div:nth-child(2) > i', //old
@@ -15,7 +16,7 @@ module.exports = {
     //currentRoomName: "#app > div.application--wrap > aside > div:nth-child(1) > div > div:nth-child(1) > div > div > div.room_box.current_room > div.room > div.room_name", //old
     currentRoomName: '#app > div.application--wrap > main > div > div > div > div:nth-child(1) > div',
     //micButton: '#micButton',
-    //micButton: '#app > div > footer > v-row > button:nth-child(1)',
+    micButton: '#app > div.application--wrap > main > div > div > div > footer > v-row > button:nth-child(1)',
     //micStatusIcon: '#micStatusIcon.icon.icon.icon-mic-off',
     //micStatusIcon: '',
     //micStatusOffIcon: '#micStatusIcon.icon.icon.icon-mic-off',
@@ -24,7 +25,7 @@ module.exports = {
     //micStatusOnIcon: '#micStatusIcon.icon.icon.icon-mic-on',
     //micStatusOnIcon: '#app > div > footer > v-row > button.control_btn.control_on.btn > div > div > i',    
     //screenShareButton: '#screenShareButton',
-    //screenShareButton: '#app > div > footer > v-row > button:nth-child(2)',
+    screenShareButton: '#app > div.application--wrap > main > div > div > div > footer > v-row > button:nth-child(2)',
     //screenShareStatusIcon: '#screenShareStatusIcon',
     //screenShareStatusIcon: '',
     //screenshareSTatusOffIcon: '#screenShareStatusIcon.icon.icon.icon-screen-off',

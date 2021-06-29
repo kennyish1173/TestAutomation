@@ -12,6 +12,7 @@ const accountSettingsWindow = require('./ui-objects/accountSettingsWindow')
 const manageRoomWindow= require('./ui-objects/manageRoomPopup')
 const closeWindow = require('./ui-objects/closeWindow')
 const myStatusWindow = require('./ui-objects/myStatusWindow')
+const appSettingsWindow = require('./ui-objects/appSettingsWindow')
 
 const assert = require('assert')
 const expect = require('chai').expect
@@ -23,6 +24,7 @@ const passwordResetPage = require('./ui-objects/passwordResetPage')
 const { passwordResetEmailTextField, passwordResetStatusParagraph } = require('./ui-objects/passwordResetPage')
 const manageRoomPopup = require('./ui-objects/manageRoomPopup')
 const testdata = require('./test_data/testdata')
+const screenShareWindow = require('./ui-objects/screenShareWindow')
 
 //const path = require('path')
 //const date = require('Date')
@@ -46,7 +48,7 @@ function delay(interval)
    }).timeout(interval + 100) // The extra 100ms should guarantee the test will not fail due to exceeded timeout
 }
 
-describe('Switch between groups', function () {
+describe('Test Screen Share', function () {
   this.timeout(60000)
   let app
 
@@ -107,72 +109,83 @@ describe('Switch between groups', function () {
   delay(testData.waitLogin)
 
   //Main Scenario
-  it('Click group selector', function (){
-    return app.client.windowByIndex(roomListWindow.windowIndex)
-    .click(roomListWindow.groupSelector)
+  it('Select a room', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex)    
+    .click(roomListWindow.roomName01)
   })
+ 
+  delay(testData.waitLoad)
 
-  delay(testData.waitScreen)
-
-  it('Test Case 27: Select different group', function (){
-    return app.client.windowByIndex(roomListWindow.windowIndex)
-    .click(roomListWindow.group02)
-  })
-
-  delay(testData.waitLogin) //wait for app to relogin
-
-  it('Click expand icon', function(){
+  it('Click mic button', function (){
     return app.client.windowByIndex(currentRoomWindow.windowIndex)
-    .click(currentRoomWindow.expandIcon)
+      .click(currentRoomWindow.micButton)
   })
 
   delay(testData.waitScreen)
 
-  it('Test Caes 28: Should show current group', function (){
-    return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.groupSelector).then(function (groupName) {
-      console.log("Current Room: " + groupName)
-      expect(groupName).to.equal(testData.group_02)
-    })
+  it('Click Screenshare Window', function (){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+      .click(currentRoomWindow.screenShareButton)
   })
 
   delay(testData.waitScreen)
 
-  it('Test Case 29: Should show group\'s room', function (){
-    return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.roomName01_text).then(function (getRoomName) {
-      console.log("room: " + getRoomName)
-      expect(getRoomName).to.equal(testData.group_02_room_01)
-    })
+  it('Test Case 103: Select Screenshare Window', function (){
+    return app.client.windowByIndex(screenShareWindow.windowIndex)
+      .click(screenShareWindow.fullScreen)
   })
-
-//Switch back to original group
-it('Click group selector', function (){
-  return app.client.windowByIndex(roomListWindow.windowIndex)
-  .click(roomListWindow.groupSelector)
-})
-
-delay(testData.waitScreen)
-it('Switch back to original group', function (){
-  return app.client.windowByIndex(roomListWindow.windowIndex)
-  .click(roomListWindow.group01)
-})
-
-delay(testData.waitLogin) //wait for app to relogin
-
-it('Click expand icon', function(){
-  return app.client.windowByIndex(currentRoomWindow.windowIndex)
-  .click(currentRoomWindow.expandIcon)
-})
-
-delay(testData.waitScreen)
-
-it('Should show original group', function (){
-  return app.client.windowByIndex(roomListWindow.windowIndex).getText(roomListWindow.groupSelector).then(function (groupName) {
-    console.log("Current Room: " + groupName)
-    expect(groupName).to.equal(testData.group_01)
-  })
-})
+ 
+  delay(testData.waitScreen)
   
-//Closing
+  it('Stop Screenshare', function (){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+      .click(currentRoomWindow.screenShareButton)
+  })
+
+  it('Click Screenshare Window', function (){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+      .click(currentRoomWindow.screenShareButton)
+  })
+
+  delay(testData.waitScreen)
+
+  it('Test Case 104: Re-select Screenshare Window', function (){
+    return app.client.windowByIndex(screenShareWindow.windowIndex)
+      .click(screenShareWindow.fullScreen)
+  })
+
+  delay(testData.waitScreen)
+
+  // move room and screenshare
+  // it('Click expand icon', function (){
+  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)    
+  //   .click(currentRoomWindow.expandIcon)
+  // })
+  
+  // delay(testData.waitMidLoad)
+
+  // it('Select another room', function (){
+  //   return app.client.windowByIndex(roomListWindow.windowIndex)    
+  //   .click(roomListWindow.roomName01)
+  //   .click(roomListWindow.roomName02)
+  // })
+
+  // delay(testData.waitLoad)
+
+  // it('Click Screenshare Window', function (){
+  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
+  //     .click(currentRoomWindow.screenShareButton)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('Test Case 99: Re-select Screenshare Window', function (){
+  //   return app.client.windowByIndex(screenShareWindow.windowIndex)
+  //     .click(screenShareWindow.fullScreen)
+  // })
+    
+  
+  //Closing
   it('Click Close button', function (){
     return app.client.windowByIndex(currentRoomWindow.windowIndex)
       .click(currentRoomWindow.closeButton)
@@ -182,5 +195,5 @@ it('Should show original group', function (){
     return app.client.windowByIndex(closeWindow.windowIndex)
       .click(closeWindow.shutdownAppButton)
   })
-  })
+ })
  

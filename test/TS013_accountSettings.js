@@ -120,11 +120,143 @@ describe('Test Account Settings', function () {
 
   delay(testData.waitScreen)
   
-
   // profile picture
   
   // Profile name
+  // it('Click name text field', function (){
+  //   return app.client.windowByIndex(settingsWindow.windowIndex)
+  //     .click(accountSettingsWindow.nameTextField)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('Change account name', function (){
+  //   return app.client.windowByIndex(accountSettingsWindow.windowIndex)
+  //     .waitForEnabled(accountSettingsWindow.nameTextField)
+  //     .clearElement(accountSettingsWindow.nameTextField)
+  //     .setValue(accountSettingsWindow.nameTextField,testData.changeName)
+  //     .click(accountSettingsWindow.saveNameButton)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('Test Case 74: Displays new account name', function (){
+  //   return app.client.windowByIndex(accountSettingsWindow.windowIndex).getText(accountSettingsWindow.nameTextField).then(function (getNewName){
+  //     console.log("email address: " + getNewName)
+  //     expect(getNewName).to.equal(testData.changeName)
+  //   })
+  // })
+
+  // it('Click name text field', function (){
+  //   return app.client.windowByIndex(settingsWindow.windowIndex)
+  //     .click(accountSettingsWindow.nameTextField)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('Change account name to null', function (){
+  //   return app.client.windowByIndex(accountSettingsWindow.windowIndex)
+  //     .waitForEnabled(accountSettingsWindow.nameTextField)
+  //     .clearElement(accountSettingsWindow.nameTextField)
+  //     //.setValue(accountSettingsWindow.nameTextField,'')
+  //     .click(accountSettingsWindow.saveNameButton)
+  // })
+
+  // it('Close Account Settings window', function (){
+  //   return app.client.windowByIndex(settingsWindow.windowIndex)
+  //     .click(settingsWindow.closeButton)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('click profile avatar', function (){
+  //   return app.client.windowByIndex(roomListWindow.windowIndex)
+  //   .click(currentRoomWindow.avatar)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('Test Case 75: Account name should not change to null', function(){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.name).then(function (getName) {
+  //     console.log("default Status: " + getName)
+  //     expect(getName).to.equal(testData.changeName)
+  //   })
+  // })
+
+  // it('Open Settings Window', function (){
+  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
+  //     .click(currentRoomWindow.settingsMenuIcon)
+  // })
+
+  // it('Open Account Settings window', function (){
+  //   return app.client.windowByIndex(settingsWindow.windowIndex)
+  //     .click(settingsWindow.accountSettingsIcon)
+  // })
+
+  // it('Click name text field', function (){
+  //   return app.client.windowByIndex(settingsWindow.windowIndex)
+  //     .click(accountSettingsWindow.nameTextField)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('Change account name to whitespace', function (){
+  //   return app.client.windowByIndex(accountSettingsWindow.windowIndex)
+  //     .waitForEnabled(accountSettingsWindow.nameTextField)
+  //     .clearElement(accountSettingsWindow.nameTextField)
+  //     .setValue(accountSettingsWindow.nameTextField,' ')
+  //     .click(accountSettingsWindow.saveNameButton)
+  // })
+
+  // delay(testData.waitScreen)
   
+  // it('Close Account Settings window', function (){
+  //   return app.client.windowByIndex(settingsWindow.windowIndex)
+  //     .click(settingsWindow.closeButton)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('click profile avatar', function (){
+  //   return app.client.windowByIndex(roomListWindow.windowIndex)
+  //   .click(currentRoomWindow.avatar)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('Test Case 76: Account name should change to whitespace', function(){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.name).then(function (getName) {
+  //     console.log("default Status: " + getName)
+  //     expect(getName).to.equal(' ')
+  //   })
+  // })
+
+  // //change name back to original
+  // it('Open Settings Window', function (){
+  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
+  //     .click(currentRoomWindow.settingsMenuIcon)
+  // })
+
+  // it('Open Account Settings window', function (){
+  //   return app.client.windowByIndex(settingsWindow.windowIndex)
+  //     .click(settingsWindow.accountSettingsIcon)
+  // })
+
+  // it('Click name text field', function (){
+  //   return app.client.windowByIndex(settingsWindow.windowIndex)
+  //     .click(accountSettingsWindow.nameTextField)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('Change account name back to original name', function (){
+  //   return app.client.windowByIndex(accountSettingsWindow.windowIndex)
+  //     .waitForEnabled(accountSettingsWindow.nameTextField)
+  //     .clearElement(accountSettingsWindow.nameTextField)
+  //     .setValue(accountSettingsWindow.nameTextField,testData.profileName)
+  //     .click(accountSettingsWindow.saveNameButton)
+  // })
+
   // Email address
   it('Test Case 77: Displays email address', function (){
     return app.client.windowByIndex(accountSettingsWindow.windowIndex).getText(accountSettingsWindow.emailAddressString).then(function (getEmailAddress){
@@ -132,7 +264,6 @@ describe('Test Account Settings', function () {
       expect(getEmailAddress).to.equal(testData.emailAddress_02)
     })
   })
-
 
   // Password Reset
   it('Open Account Settings window', function (){
