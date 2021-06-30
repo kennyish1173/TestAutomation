@@ -106,6 +106,9 @@ describe('Test Status settings', function () {
   delay(testData.waitLogin)
 
   //Main Scenario
+  //------------------------------------------
+  // Test Case 20 (Status)
+  //------------------------------------------
   it('Select a room', function (){
     return app.client.windowByIndex(roomListWindow.windowIndex)
     .click(roomListWindow.roomName01)
@@ -120,325 +123,335 @@ describe('Test Status settings', function () {
 
   delay(testData.waitScreen)
 
-  //To Do: figure getHtml to work
-  // //Preparation for Test Case 14
-  // it('Get current avatar state', function(){
-  //   return app.client.windowByIndex(myStatusWindow.windowIndex).getHTML(myStatusWindow.avatar).then(function (getAvatarHtml) {
-  //     avatarHtml = getAvatarHtml
-  //     console.log("default Status: " + avatarHtml)
-  //   })
-  // })
-
-  // it('Test Case: 14 Confirm avatar picture', function(){
-  //   expect(currentStatus).to.match(/img/)
-  // })
-
-  //Prepartion for Test Case 15
   it('Get currently displayed status', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentStatus).then(function (getStatusText) {
-      currentStatus = getStatusText
-      console.log("default Status: " + currentStatus)
+      console.log("default Status: " + getStatusText)
+      expect(getStatusText).to.match(/アクティブ/)
+    })
+  })
+  //------------------------------------------
+  
+  it('Click Let\'s talk', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.currentStatus)
+    .click(myStatusWindow.setToLetsTalk)
+  })
+  
+  delay(testData.waitLoad)
+
+  it('Test Case: 20-1 Set status to Let\'s talk', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentStatus).then(function (getStatusText) {
+      console.log("Current status: " + getStatusText)
+      expect(getStatusText).to.match(/話そうよ/)
     })
   })
 
-  it('Test Case: 15 Confirm current is active', function(){
-    expect(currentStatus).to.match(/アクティブ/)
+  delay(testData.waitLoad)
+
+  //------------------------------------------
+  
+  it('Click Set To Active', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.currentStatus)
+    .click(myStatusWindow.setToActive)
+  })
+  
+  delay(testData.waitMidLoad)
+
+  it('Test Case: 20-2 Set status to Active', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentStatus).then(function (getStatusText) {
+      console.log("Current status: " + getStatusText)
+      expect(getStatusText).to.match(/アクティブ/)
+    })
   })
 
   //------------------------------------------
-  //Preparation for Test Case 20
+  
   it('Click Set To Busy Button', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.setToBusyButton)
+    .click(myStatusWindow.currentStatus)
+    .click(myStatusWindow.setToBusy)
   })
+  
+  delay(testData.waitMidLoad)
 
-  delay(testData.waitLoad)
-
-  //Preparation for Test Case 20
-  it('Get currently displayed status', function(){
+  it('Test Case: 20-3 Set status to busy', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentStatus).then(function (getStatusText) {
       currentStatus = getStatusText
       console.log("Current status: " + currentStatus)
+      expect(currentStatus).to.match(/取り込み中/)
     })
   })
 
-  it('Test Case: 20 Set status to busy', function(){
-    expect(currentStatus).to.match(/取り込み中/)
-  })
-  
-
-  //Test Case 20 post operation
-  it('Clear Busy status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.clearBusyStatusButton)
-  })
-
-  delay(testData.waitScreen)
-
   //------------------------------------------
-  // Test Case 21-1 (2hrs)
+  // Test Case 21-1 (15 mins)
   //------------------------------------------
   
-  //Preparation for Test Case 21-1
   it('Click Status Time drop-down button', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex)
     .click(myStatusWindow.statusTimeDropDownButton)
   })
 
   delay(testData.waitScreen)
-
-  //Preparation for Test Case 21-1
-  it('Set Status time to two hours', function(){
+  
+  it('Set Status time to 15 minutes', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.statusTimeTwoHours)
-  })
-
-  //Preparation for Test Case 21-1
-  it('Click Set To Busy button', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.setToBusyButton)
+    .click(myStatusWindow.fifteenMinutes)
   })
 
   delay(testData.waitLoad)
 
-  //Preparation for Test Case 21-1
-  it('Get currently displayed status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentStatus).then(function (getStatusText) {
-      currentStatus = getStatusText
-      console.log("Current status: " + currentStatus)
-    })
-  })
-
-  //Preparation for Test Case 21-1
-  it('Status set to busy', function(){
-    expect(currentStatus).to.match(/取り込み中/)
-  })
-
-  //Preparation for Test Case 21-1
   it('Get current timer value', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.timerValue).then(function (getTimerValue) {
       currentTimerValue = getTimerValue
-      console.log("Current status: " + currentTimerValue)
+      console.log("Timer value: " + currentTimerValue)
     })
   })
 
-  it('Test Case 21-1: Set to busy (2 hours)', function(){
-    expect(currentTimerValue).to.match(/1時間 59分/)
+  it('Test Case 21-1: Set timer (15 minutes)', function(){
+    expect(currentTimerValue).to.match(/残り : 00:14/)
   })
-
-  //Test Case 21-1 post operation
-  it('Clear Busy status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.clearBusyStatusButton)
-  })
-
-  delay(testData.waitLoad)
-
+    
   //------------------------------------------
-  // Test Case 21-2 (4 hours)
+  // Test Case 21-2 (30 mins)
   //------------------------------------------
-  //Preparation for Test Case 21-2
   it('Click Status Time drop-down button', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex)
     .click(myStatusWindow.statusTimeDropDownButton)
   })
 
-  //Preparation for Test Case 21-2
-  it('Set Status time to four hours', function(){
+  delay(testData.waitScreen)
+  
+  it('Set Status time to 30 minutes', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.statusTimeFourHours)
-  })
-
-  //Preparation for Test Case 21-2
-  it('Click Set To Busy button', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.setToBusyButton)
+    .click(myStatusWindow.thirtyMinutes)
   })
 
   delay(testData.waitLoad)
 
-  //Preparation for Test Case 21-2
-  it('Get currently displayed status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentStatus).then(function (getStatusText) {
-      currentStatus = getStatusText
-      console.log("Current status: " + currentStatus)
-    })
-  })
-
-  //Preparation for Test Case 21-2
-  it('Status set to busy', function(){
-    expect(currentStatus).to.match(/取り込み中/)
-  })
-
-  //Preparation for Test Case 21-2
   it('Get current timer value', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.timerValue).then(function (getTimerValue) {
       currentTimerValue = getTimerValue
-      console.log("Current status: " + currentTimerValue)
+      console.log("Timer value: " + currentTimerValue)
     })
   })
 
-  it('Test Case 21-2: Set to busy (4 hour)', function(){
-    expect(currentTimerValue).to.match(/3時間 59分/)
+  it('Test Case 21-2: Set timer (30 minutes)', function(){
+    expect(currentTimerValue).to.match(/残り : 00:29/)
   })
 
-  //Test Case 21-3 post operation
-  it('Clear Busy status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.clearBusyStatusButton)
-  })
-
-  delay(testData.waitLoad)
-
   //------------------------------------------
-  // Test Case 21-3 (Whole Day)
+  // Test Case 21-3 (1 hour)
   //------------------------------------------
-  //Preparation for Test Case 21-3
   it('Click Status Time drop-down button', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex)
     .click(myStatusWindow.statusTimeDropDownButton)
   })
 
-  //Preparation for Test Case 21-3
-  it('Set Status time to whole day', function(){
+  delay(testData.waitScreen)
+  
+  it('Set Status time to 1 hour', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.statusTimeWholeDay)
-  })
-
-  //Preparation for Test Case 21-3
-  it('Click Set To Busy button', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.setToBusyButton)
+    .click(myStatusWindow.oneHour)
   })
 
   delay(testData.waitLoad)
 
-  //Preparation for Test Case 21-3
-  it('Get currently displayed status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentStatus).then(function (getStatusText) {
-      currentStatus = getStatusText
-      console.log("Current status: " + currentStatus)
-    })
-  })
-
-  //Preparation for Test Case 21-3
-  it('Status set to busy', function(){
-    expect(currentStatus).to.match(/取り込み中/)
-  })
-
-  //Preparation for Test Case 21-3
   it('Get current timer value', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.timerValue).then(function (getTimerValue) {
       currentTimerValue = getTimerValue
-      console.log("Current status: " + currentTimerValue)
+      console.log("Timer value: " + currentTimerValue)
     })
   })
 
-  it('Test Case 21-2: Set to busy (4 hour)', function(){
+  it('Test Case 21-3: Set timer (1 hour)', function(){
+    expect(currentTimerValue).to.match(/残り : 00:59/)
+  })
+
+  //------------------------------------------
+  // Test Case 21-4 (2 hours)
+  //------------------------------------------
+  it('Click Status Time drop-down button', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.statusTimeDropDownButton)
+  })
+
+  delay(testData.waitScreen)
+  
+  it('Set Status time to 2 hours', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.twoHours)
+  })
+
+  delay(testData.waitLoad)
+
+  it('Get current timer value', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.timerValue).then(function (getTimerValue) {
+      currentTimerValue = getTimerValue
+      console.log("Timer value: " + currentTimerValue)
+    })
+  })
+
+  it('Test Case 21-4: Set timer (2 hours)', function(){
+    expect(currentTimerValue).to.match(/残り : 01:59/)
+  })
+  
+  //------------------------------------------
+  // Test Case 21-5 (4 hours)
+  //------------------------------------------
+  it('Click Status Time drop-down button', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.statusTimeDropDownButton)
+  })
+
+  delay(testData.waitScreen)
+  
+  it('Set Status time to 4 hours', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.fourHours)
+  })
+
+  delay(testData.waitLoad)
+
+  it('Get current timer value', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.timerValue).then(function (getTimerValue) {
+      currentTimerValue = getTimerValue
+      console.log("Timer value: " + currentTimerValue)
+    })
+  })
+
+  it('Test Case 21-5: Set timer (4 hours)', function(){
+    expect(currentTimerValue).to.match(/残り : 03:59/)
+  })
+
+  //------------------------------------------
+  // Test Case 21-6 (whole day)
+  //------------------------------------------
+  it('Click Status Time drop-down button', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.statusTimeDropDownButton)
+  })
+
+  delay(testData.waitScreen)
+  
+  it('Set Status time to Whole Day', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.wholeDay)
+  })
+
+  delay(testData.waitLoad)
+
+  it('Get current timer value', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.timerValue).then(function (getTimerValue) {
+      currentTimerValue = getTimerValue
+      console.log("Timer value: " + currentTimerValue)
+    })
+  })
+
+  it('Test Case 21-6: Set timer (Whole Day)', function(){
     expect(currentTimerValue).to.match(/本日中/)
   })
 
-  //Test Case 21-3 post operation
-  it('Clear Busy status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.clearBusyStatusButton)
-  })
-
-  delay(testData.waitLoad)
-
   //------------------------------------------
 
 
+  // //Preparation for Test Case 22
+  // it('Click Status drop-down button', function (){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex)
+  //   .click(myStatusWindow.statusDropDownButton)
+  // })
 
-  //Preparation for Test Case 22
-  it('Click Status drop-down button', function (){
+  // delay(testData.waitScreen)
+
+  // //Preparation for Test Case 22
+  // it('Select any status', function(){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex)
+  //   .click(myStatusWindow.statusLetsTalk)
+  // })
+
+  // delay(testData.waitMidLoad) //wait for notificatin to disappear
+
+  // it('click profile avatar', function (){
+  //   return app.client.windowByIndex(roomListWindow.windowIndex)
+  //   .click(currentRoomWindow.avatar)
+  // })
+
+  // delay(testData.waitLoad)
+
+  // //Preparation for Test Case 22
+  // it('Get currently displayed status', function(){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
+  //     currentStatus = getStatusText
+  //     console.log("Status Selected: " + currentStatus)
+  //   })
+  // })
+ 
+  // it('Test Case: 22 Able to set status', function(){
+  //   expect(currentStatus).to.match(/話しましょう/)
+  // })
+ 
+
+  // //Preparation for Test Case 23
+  // it('Click Status drop-down button', function (){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex02)
+  //   .click(myStatusWindow.statusDropDownButton)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // //Preparation for Test Case 23
+  // it('Change status', function(){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex02)
+  //   .click(myStatusWindow.statusOutForMeal)
+  // })
+
+  // delay(testData.waitLoad) //wait for notificatin to disappear
+
+  // it('click profile avatar', function (){
+  //   return app.client.windowByIndex(roomListWindow.windowIndex)
+  //   .click(currentRoomWindow.avatar)
+  // })
+
+  // delay(testData.waitLoad)
+
+  // //Preparation for Test Case 23
+  // it('Test Case 23: Should change status', function(){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
+  //     console.log("Current Status: " + getStatusText)
+  //     expect(getStatusText).to.match(/食事中/)
+  //   })
+  // })
+
+  // //Preparation for Test Case 24
+  // it('Click Clear Status button', function(){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex02)
+  //   .click(myStatusWindow.clearStatus)
+  // })
+
+  // delay(testData.waitLoad) //wait for notificatin to disappear
+
+  // it('click profile avatar', function (){
+  //   return app.client.windowByIndex(roomListWindow.windowIndex)
+  //   .click(currentRoomWindow.avatar)
+  // })
+
+  // delay(testData.waitLoad)
+
+  // //Preparation for Test Case 24
+  // it('Get currently displayed status', function(){
+  //   return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
+  //     console.log("Status cleared: " + getStatusText)
+  //     expect(getStatusText).to.match(/ステータスを選択/)
+  //   })
+  // })
+  //************************************************************************************************************************************ */
+  
+  it('Clear status', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.statusDropDownButton)
+    .click(myStatusWindow.clearStatusButton)
   })
 
   delay(testData.waitScreen)
-
-  //Preparation for Test Case 22
-  it('Select any status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex)
-    .click(myStatusWindow.statusLetsTalk)
-  })
-
-  delay(testData.waitMidLoad) //wait for notificatin to disappear
-
-  it('click profile avatar', function (){
-    return app.client.windowByIndex(roomListWindow.windowIndex)
-    .click(currentRoomWindow.avatar)
-  })
-
-  delay(testData.waitLoad)
-
-  //Preparation for Test Case 22
-  it('Get currently displayed status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
-      currentStatus = getStatusText
-      console.log("Status Selected: " + currentStatus)
-    })
-  })
- 
-  it('Test Case: 22 Able to set status', function(){
-    expect(currentStatus).to.match(/話しましょう/)
-  })
- 
-
-  //Preparation for Test Case 23
-  it('Click Status drop-down button', function (){
-    return app.client.windowByIndex(myStatusWindow.windowIndex02)
-    .click(myStatusWindow.statusDropDownButton)
-  })
-
-  delay(testData.waitScreen)
-
-  //Preparation for Test Case 23
-  it('Change status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex02)
-    .click(myStatusWindow.statusOutForMeal)
-  })
-
-  delay(testData.waitLoad) //wait for notificatin to disappear
-
-  it('click profile avatar', function (){
-    return app.client.windowByIndex(roomListWindow.windowIndex)
-    .click(currentRoomWindow.avatar)
-  })
-
-  delay(testData.waitLoad)
-
-  //Preparation for Test Case 23
-  it('Test Case 23: Should change status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
-      console.log("Current Status: " + getStatusText)
-      expect(getStatusText).to.match(/食事中/)
-    })
-  })
-
-  //Preparation for Test Case 24
-  it('Click Clear Status button', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex02)
-    .click(myStatusWindow.clearStatus)
-  })
-
-  delay(testData.waitLoad) //wait for notificatin to disappear
-
-  it('click profile avatar', function (){
-    return app.client.windowByIndex(roomListWindow.windowIndex)
-    .click(currentRoomWindow.avatar)
-  })
-
-  delay(testData.waitLoad)
-
-  //Preparation for Test Case 24
-  it('Get currently displayed status', function(){
-    return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
-      console.log("Status cleared: " + getStatusText)
-      expect(getStatusText).to.match(/ステータスを選択/)
-    })
-  })
   
   // Spectron bug? can't focus on main window after popup notification
   //Closing
