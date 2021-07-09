@@ -129,6 +129,9 @@ describe('Test Status settings', function () {
       expect(getStatusText).to.match(/アクティブ/)
     })
   })
+
+  //------------------------------------------
+  // Test Case 20: Set Status / Change Status (Presence)
   //------------------------------------------
   
   it('Click Let\'s talk', function(){
@@ -353,105 +356,68 @@ describe('Test Status settings', function () {
   })
 
   //------------------------------------------
+  // Test Case 22: Set Status / Change Status (Presence)
+  //------------------------------------------
+  
+  it('Click \'Open for Consultation\'', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.currentStatus)
+    .click(myStatusWindow.setToOpenForConsulation)
+  })
+  
+  delay(testData.waitLoad)
 
+  it('Test Case: 22-1 Set status to \'Open for Consultation\'', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentCustomStatusIcon).then(function (getStatusIcon) {
+      console.log("Current status: " + getStatusIcon)
+      expect(getStatusIcon).to.match(/👋/)
+    })
+  })
 
-  // //Preparation for Test Case 22
-  // it('Click Status drop-down button', function (){
-  //   return app.client.windowByIndex(myStatusWindow.windowIndex)
-  //   .click(myStatusWindow.statusDropDownButton)
-  // })
+  it('Click \'Out For Meal\'', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.currentStatus)
+    .click(myStatusWindow.setToOutForMeal)
+  })
+  
+  delay(testData.waitLoad)
 
-  // delay(testData.waitScreen)
+  it('Test Case: 22-2 Set status to \'Out for Meal\'', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentCustomStatusIcon).then(function (getStatusIcon) {
+      console.log("Current status: " + getStatusIcon)
+      expect(getStatusIcon).to.match(/🍙/)
+    })
+  })
+  
+  it('Click \'\'', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.currentStatus)
+    .click(myStatusWindow.setToFocusTime)
+  })
+  
+  delay(testData.waitLoad)
 
-  // //Preparation for Test Case 22
-  // it('Select any status', function(){
-  //   return app.client.windowByIndex(myStatusWindow.windowIndex)
-  //   .click(myStatusWindow.statusLetsTalk)
-  // })
+  it('Test Case: 22-3 Set status to \'Focus Time\'', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex).getText(myStatusWindow.currentCustomStatusIcon).then(function (getStatusIcon) {
+      console.log("Current status: " + getStatusIcon)
+      expect(getStatusIcon).to.match(/⏰/)
+    })
+  })
 
-  // delay(testData.waitMidLoad) //wait for notificatin to disappear
-
-  // it('click profile avatar', function (){
-  //   return app.client.windowByIndex(roomListWindow.windowIndex)
-  //   .click(currentRoomWindow.avatar)
-  // })
-
-  // delay(testData.waitLoad)
-
-  // //Preparation for Test Case 22
-  // it('Get currently displayed status', function(){
-  //   return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
-  //     currentStatus = getStatusText
-  //     console.log("Status Selected: " + currentStatus)
-  //   })
-  // })
- 
-  // it('Test Case: 22 Able to set status', function(){
-  //   expect(currentStatus).to.match(/話しましょう/)
-  // })
- 
-
-  // //Preparation for Test Case 23
-  // it('Click Status drop-down button', function (){
-  //   return app.client.windowByIndex(myStatusWindow.windowIndex02)
-  //   .click(myStatusWindow.statusDropDownButton)
-  // })
-
-  // delay(testData.waitScreen)
-
-  // //Preparation for Test Case 23
-  // it('Change status', function(){
-  //   return app.client.windowByIndex(myStatusWindow.windowIndex02)
-  //   .click(myStatusWindow.statusOutForMeal)
-  // })
-
-  // delay(testData.waitLoad) //wait for notificatin to disappear
-
-  // it('click profile avatar', function (){
-  //   return app.client.windowByIndex(roomListWindow.windowIndex)
-  //   .click(currentRoomWindow.avatar)
-  // })
-
-  // delay(testData.waitLoad)
-
-  // //Preparation for Test Case 23
-  // it('Test Case 23: Should change status', function(){
-  //   return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
-  //     console.log("Current Status: " + getStatusText)
-  //     expect(getStatusText).to.match(/食事中/)
-  //   })
-  // })
-
-  // //Preparation for Test Case 24
-  // it('Click Clear Status button', function(){
-  //   return app.client.windowByIndex(myStatusWindow.windowIndex02)
-  //   .click(myStatusWindow.clearStatus)
-  // })
-
-  // delay(testData.waitLoad) //wait for notificatin to disappear
-
-  // it('click profile avatar', function (){
-  //   return app.client.windowByIndex(roomListWindow.windowIndex)
-  //   .click(currentRoomWindow.avatar)
-  // })
-
-  // delay(testData.waitLoad)
-
-  // //Preparation for Test Case 24
-  // it('Get currently displayed status', function(){
-  //   return app.client.windowByIndex(myStatusWindow.windowIndex02).getText(myStatusWindow.statusDropDownText).then(function (getStatusText) {
-  //     console.log("Status cleared: " + getStatusText)
-  //     expect(getStatusText).to.match(/ステータスを選択/)
-  //   })
-  // })
   //************************************************************************************************************************************ */
   
-  it('Clear status', function(){
+  //Test Case 24
+  it('Test Case 24: Clear status', function(){
     return app.client.windowByIndex(myStatusWindow.windowIndex)
     .click(myStatusWindow.clearStatusButton)
   })
 
   delay(testData.waitScreen)
+
+  it('Test Case 24: Clear status', function(){
+    return app.client.windowByIndex(myStatusWindow.windowIndex)
+    .click(myStatusWindow.clearCustomStatusButton)
+  })
   
   // Spectron bug? can't focus on main window after popup notification
   //Closing

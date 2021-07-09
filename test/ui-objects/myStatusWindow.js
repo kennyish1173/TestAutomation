@@ -11,12 +11,14 @@ module.exports = {
     setToLetsTalk: '#app > div.menu__content.menuable__content__active > div > div:nth-child(1) > div:nth-child(2) > a > div.list__tile__content > div',
     setToActive: '#app > div.menu__content.menuable__content__active > div > div:nth-child(1) > div:nth-child(3) > a > div.list__tile__content > div',
     setToBusy: '#app > div.menu__content.menuable__content__active > div > div:nth-child(1) > div:nth-child(4) > a > div.list__tile__content > div',
+    clearStatusButton: '#myStatus > div:nth-child(3) > div > div > div > button',
 
     //カスタムステータス
-    setToOpenForConsulation: '#app > div.menu__content.menuable__content__active > div > div:nth-child(3) > div:nth-child(2) > a > div.list__tile__content > div',
-    setToOutForMeal: '#app > div.menu__content.menuable__content__active > div > div:nth-child(3) > div:nth-child(3) > a > div.list__tile__content > div',
-    setToFocusTime: '#app > div.menu__content.menuable__content__active > div > div:nth-child(3) > div:nth-child(4) > a > div.list__tile__content > div',
-    clearStatusButton: '#myStatus > div:nth-child(3) > div > div > div > button',
+    setToOpenForConsulation: '#app > div.menu__content.menuable__content__active > div > div:nth-child(3) > div:nth-child(2) > a',
+    setToOutForMeal: '#app > div.menu__content.menuable__content__active > div > div:nth-child(3) > div:nth-child(3) > a',
+    setToFocusTime: '#app > div.menu__content.menuable__content__active > div > div:nth-child(3) > div:nth-child(4) > a',
+    currentCustomStatusIcon: '#myStatus > div.custom_status_form.mt-3 > button.btn_icon.btn > div',
+    clearCustomStatusButton: '#myStatus > div.custom_status_form.mt-3 > button.clear-btn.off_hover.btn.btn--flat.btn--small > div',
     
     //statusTime
     statusTimeDropDownButton: '#myStatus > div:nth-child(5) > div > div > div > div > span > span > span',
