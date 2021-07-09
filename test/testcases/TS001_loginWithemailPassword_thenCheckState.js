@@ -107,7 +107,7 @@ describe('TS001 Login with email and password', function () {
 
   delay(testData.waitLogin)
 
-  it('04 Test Case 008: Should launch Current Room window', function () {
+  it('04 \'Test Case 008\' Should launch Current Room window', function () {
     return app.client.getWindowCount().then(function (count) {
       count.should.equal(7)
     })
@@ -117,7 +117,6 @@ describe('TS001 Login with email and password', function () {
     return app.client.windowByIndex(roomListWindow.windowIndex)
       .saveScreenshot(screenshotFolder+this.test.title+'_01'+'.png')
       .click(roomListWindow.manageRoomButton)
-      //.saveScreenshot(screenshotFolder+this.test.title+'_02'+'.png')
   })
 
   // Post Test Case 009 operation
@@ -125,7 +124,6 @@ describe('TS001 Login with email and password', function () {
     return app.client.windowByIndex(manageRoomWindow.windowIndex)
       .saveScreenshot(screenshotFolder+this.test.title+'_01'+'.png')  
       .click(manageRoomWindow.closeButton)
-      //.saveScreenshot(screenshotFolder+this.test.title+'_02'+'.png')
   }) 
 
   it('07 \'Test Case 010\' Should show Settings menu button', function (){
