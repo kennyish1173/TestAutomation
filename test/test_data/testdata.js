@@ -24,6 +24,8 @@ module.exports = {
     mic: 'Microphone (High Definition Audio Device)(default)',
 
     //Profile setings
+    profileName: 'autoTestBot',
+    changeName: 'hiThere!',
     resetPasswordSentNotificationString: 'リセットのためのメールを送りました。メール本文内のリンクをクリックして新しいパスワードを設定後、新しいパスワードでログインし直してください。',
 
     //wait time

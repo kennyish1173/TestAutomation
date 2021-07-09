@@ -24,6 +24,7 @@ const passwordResetPage = require('./ui-objects/passwordResetPage')
 const { passwordResetEmailTextField, passwordResetStatusParagraph } = require('./ui-objects/passwordResetPage')
 const manageRoomPopup = require('./ui-objects/manageRoomPopup')
 const testdata = require('./test_data/testdata')
+const screenShareWindow = require('./ui-objects/screenShareWindow')
 
 //const path = require('path')
 //const date = require('Date')
@@ -47,7 +48,7 @@ function delay(interval)
    }).timeout(interval + 100) // The extra 100ms should guarantee the test will not fail due to exceeded timeout
 }
 
-describe('Test Account Settings', function () {
+describe('Test Screen Share', function () {
   this.timeout(60000)
   let app
 
@@ -108,47 +109,61 @@ describe('Test Account Settings', function () {
   delay(testData.waitLogin)
 
   //Main Scenario
-  it('Open Settings Window', function (){
-    return app.client.windowByIndex(currentRoomWindow.windowIndex)
-      .click(currentRoomWindow.settingsMenuIcon)
+  it('Select a room', function (){
+    return app.client.windowByIndex(roomListWindow.windowIndex)    
+    .click(roomListWindow.roomName01)
   })
+ 
+  delay(testData.waitLoad)
 
-  it('Open Account Settings window', function (){
-    return app.client.windowByIndex(settingsWindow.windowIndex)
-      .click(settingsWindow.accountSettingsIcon)
+  it('Click Screenshare Window', function (){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+      .click(currentRoomWindow.screenShareButton)
   })
 
   delay(testData.waitScreen)
-  
 
-  // profile picture
+  it('Test Case 94: Select Screenshare Window', function (){
+    return app.client.windowByIndex(screenShareWindow.windowIndex)
+      .click(screenShareWindow.fullScreen)
+  })
+ 
+  delay(testData.waitScreen)
   
-  // Profile name
-  
-  // Email address
-  it('Test Case 77: Displays email address', function (){
-    return app.client.windowByIndex(accountSettingsWindow.windowIndex).getText(accountSettingsWindow.emailAddressString).then(function (getEmailAddress){
-      console.log("email address: " + getEmailAddress)
-      expect(getEmailAddress).to.equal(testData.emailAddress_02)
-    })
+  it('Test Case: 97: Stop Screenshare', function (){
+    return app.client.windowByIndex(currentRoomWindow.windowIndex)
+      .click(currentRoomWindow.screenShareButton)
   })
 
+  delay(testData.waitScreen)
 
-  // Password Reset
-  it('Open Account Settings window', function (){
-    return app.client.windowByIndex(accountSettingsWindow.windowIndex)
-      .click(accountSettingsWindow.passwordResetButton)
-  })
+  // move room and screenshare
+  // it('Click expand icon', function (){
+  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)    
+  //   .click(currentRoomWindow.expandIcon)
+  // })
+  
+  // delay(testData.waitMidLoad)
 
-  delay(testData.waitLoad)
+  // it('Select another room', function (){
+  //   return app.client.windowByIndex(roomListWindow.windowIndex)    
+  //   .click(roomListWindow.roomName01)
+  //   .click(roomListWindow.roomName02)
+  // })
 
-  it('Test Case 79: Displays password reset mail sent notification', function (){
-    return app.client.windowByIndex(accountSettingsWindow.notificationIndex).getText(accountSettingsWindow.passwordResetNotificationMessage).then(function (getNotificationMessage){
-      console.log("email address: " + getNotificationMessage)
-      expect(getNotificationMessage).to.equal(testData.resetPasswordSentNotificationString)
-    })
-  })
+  // delay(testData.waitLoad)
 
+  // it('Click Screenshare Window', function (){
+  //   return app.client.windowByIndex(currentRoomWindow.windowIndex)
+  //     .click(currentRoomWindow.screenShareButton)
+  // })
+
+  // delay(testData.waitScreen)
+
+  // it('Test Case 99: Re-select Screenshare Window', function (){
+  //   return app.client.windowByIndex(screenShareWindow.windowIndex)
+  //     .click(screenShareWindow.fullScreen)
+  // })
     
   
   //Closing
