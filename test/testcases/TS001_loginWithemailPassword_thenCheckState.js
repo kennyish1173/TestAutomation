@@ -60,7 +60,6 @@ describe('TS001 Login with email and password', function () {
   after(async() => {
     //stopApp not working! :(
     //await hooks.stopApp(app)
-    //await app.stop();
   })
   
   beforeEach(async () => {
@@ -86,12 +85,6 @@ describe('TS001 Login with email and password', function () {
   })
 
   delay(testData.waitLongLoad)
-
-  it('Shows Login page', function () {
-    return app.client.getWindowCount().then(function (count) {
-      count.should.equal(6)
-    })
-  })
 
   it('02 Select Login with Existig Account', function (){
     return app.client.windowByIndex(loginPage.windowIndex)
