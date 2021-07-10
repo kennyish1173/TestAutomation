@@ -175,13 +175,13 @@ describe('TS006 Test room related control', function () {
     })
   })
 
-  it('\'Test Case 36\' Should toggle off Lobby display', function(){
+  it('07 \'Test Case 36\' Should toggle off Lobby display', function(){
     return app.client.windowByIndex(currentRoomWindow.windowIndex)
     .click(roomListWindow.toggleOfflineMember)
   })
 
   // Test Case 37 ----------------------------------
-  it('Click Manage Room button', function (){
+  it('08 Click Manage Room button', function (){
     return app.client.windowByIndex(roomListWindow.windowIndex)
       .click(roomListWindow.manageRoomButton)
   })
@@ -359,6 +359,7 @@ describe('TS006 Test room related control', function () {
 
   it('Click Shutdown App button', function (){
     return app.client.windowByIndex(closeWindow.windowIndex)
+      .saveScreenshot(screenshotFolder+this.test.title+'_01'+'.png')
       .click(closeWindow.shutdownAppButton)
   })
  })
