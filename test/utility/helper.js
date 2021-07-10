@@ -1,4 +1,5 @@
 const { systemPreferences } = require("electron")
+const path = require('path')
 const fs = require('fs')
 
 module.exports= {
@@ -9,28 +10,16 @@ module.exports= {
 
         }).timeout(interval + 100) // The extra 100ms should guarantee the test will not fail due to exceeded timeout
         },
-    focusOnWin(app, searchString, numberOfWindows) {
-        //for(let i = 0; i < numberOfWindows; i++){
-            i = numberOfWindows
-            var bodyString = app.client.windowByIndex(i).getText('body')
-            //console.log(bodyString)
-            if(bodyString.includes(searchString)){
-                return i
-            }
-        //}
-    },
-    createScreenshotFolder(){
-        var currentDate = new Date()
-        var datetime = currentDate.getFullYear() + 
-                        currentDate.getMonth() +
-                        currentDate.getDate() +
-                        currentDate.getHours() +
-                        currentDate.getMinutes() +
-                        currentDate.getSeconds()
-        var datetimeStr = datetime.toString()
-        
-        console.info(datetime)
+    clearFiles(directory){
+        fs.readdir(directory,(err, files) => {
+            if(err) throw err;
 
+            for(const file of files) {
+                fs.unlink(path.join(directory, file), err => {
+                    if (err) throw err;
+                })
+            }
+        })
     },
 }
 

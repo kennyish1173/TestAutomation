@@ -77,6 +77,7 @@ describe('Test Status settings', function () {
     return app.client.windowByIndex(onBoardingPage.windowIndex)
       //.getText('body').should.eventually.contain(onBoardingPage.messageText)
       .click(onBoardingPage.nextButton)
+      save screenshot 1 to ('./mochawesome-reports/screenshots/'+imageFileName1)
   })
 
   delay(testData.waitLongLoad)

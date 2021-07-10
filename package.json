@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "roundz app test automation",
   "scripts": {
-    "test": "mocha",
-    "test-r": "mocha test --reporter mochawesome-screenshots"
+    "test": "mocha test --reporter mochawesome-screenshots"
   },
   "author": "roundz",
   "license": "CC-BY-2.5",
